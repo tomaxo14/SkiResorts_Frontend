@@ -1,10 +1,9 @@
 import React from 'react';
-import { Carousel } from 'react-bootstrap';
-import ReactDOM from 'react-dom';
 import "./NavBar";
 import NavBar from './NavBar';
 import CarouselImage from './CarouselImage';
 import HomeInfo from './HomeInfo';
+import Footer from './Footer';
 
 class Home extends React.Component {
 
@@ -14,6 +13,7 @@ class Home extends React.Component {
                 <NavBar></NavBar>
                 <CarouselImage></CarouselImage>
                 <HomeInfo></HomeInfo>
+                <Footer></Footer>
             </div>
         )
     }

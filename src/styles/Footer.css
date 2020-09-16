@@ -1,0 +1,13 @@
+#footer {
+    background-color: #56839e94;
+}
+
+#footer-row {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+a {
+    color: black;
+    text-decoration: underline;
+}
