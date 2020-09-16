@@ -1,0 +1,34 @@
+.caption {
+    color: black !important;
+}
+
+#first-caption-title {
+    font-size: 40px;
+    color: black;
+    /* -webkit-text-stroke-width: 1px; 
+    -webkit-text-stroke-color: black;  */
+    /* margin-bottom: 100px; */
+}
+
+#first-caption-text {
+    font-size: 25px;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 100px;
+    -webkit-text-stroke-width: 0.5px; 
+    -webkit-text-stroke-color: black; 
+}
+
+#second-caption-title {
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+#check-button {
+    margin-right: 8px;
+}
+
+#signup-button {
+    margin-left: 8px;
+}
+
