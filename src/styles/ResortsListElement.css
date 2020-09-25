@@ -1,0 +1,10 @@
+.card-button {
+    background-color:#4FADE3;
+    width: 150px;
+    margin-top: 40px;
+}
+
+.card-body {
+    flex-direction: 'row';
+    flex-wrap: 'wrap';
+}

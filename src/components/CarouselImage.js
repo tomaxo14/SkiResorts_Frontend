@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Carousel, Button } from 'react-bootstrap'
 import AuthService from '../services/auth.service'
 import Slide1 from '../img/slide1.jpg';

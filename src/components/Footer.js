@@ -11,7 +11,7 @@ const Footer = () => {
                 <Row id="footer-row">
                     <Col>
                     <h3>Kontakt</h3>
-                    <h6>Napisz do nas jeśli masz jakieś pytania</h6>
+                    <h6>Napisz do mnie jeśli masz jakieś pytania</h6>
                     <p>e-mail: <a href="mailto:tomasz.a.przybylski@gmail.com">tomasz.a.przybylski@gmail.com </a></p>
                     </Col>
                     <Col>
