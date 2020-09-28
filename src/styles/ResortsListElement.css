@@ -2,9 +2,32 @@
     background-color:#4FADE3;
     width: 150px;
     margin-top: 40px;
+    
 }
 
 .card-body {
     flex-direction: 'row';
     flex-wrap: 'wrap';
+}
+
+.card {
+    margin-left: 30px;
+    margin-right: 30px;
+    /* background-color: #a1daf5d3; */
+}
+
+#blue-circle {
+    color: blue;
+}
+
+#red-circle {
+    color: red;
+}
+
+#button-div {
+    text-align: center;
+}
+
+#card-group-div {
+    align-items: center;
 }

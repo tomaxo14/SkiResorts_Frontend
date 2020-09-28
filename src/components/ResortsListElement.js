@@ -5,6 +5,14 @@ import '../styles/ResortsListElement.css';
 const ResortsListElement = (props) => {
 
     const resorts_data = props.resorts;
+    function polishCountryName (countryName) {
+        if(countryName==="Poland") return "Polska"
+        if(countryName==="Czech Republic") return "Czechy"
+        if(countryName==="Slovakia") return "Slovakia"
+    }
+
+    
+    
 
     return (<div>
         <CardGroup>
@@ -16,27 +24,38 @@ const ResortsListElement = (props) => {
                         <Card.Body >
 
                             <Card.Title>{resort.name}</Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">{resort.location.country}</Card.Subtitle>
-                            <div class="row no-gutters">
+                            <Card.Subtitle className="mb-2 text-muted">
+                                {polishCountryName(resort.location.country)}
+                            </Card.Subtitle>
+                            <div className="row no-gutters">
                             <div className="col-md-6">
+                            <br></br>
                             <Card.Text>
-                                Ocena
+                                <i>Ocena użytkowników</i>
                                 <br></br>
+                                <h4>
+                                <i className="star icon"></i>
                                 {resort.avgRating}
+                                </h4>
                             </Card.Text>
                             </div>
                             <div className="col-md-6">
                             <Card.Text>
-                                Niebieskie: {resort.blueSlopes} 
+                                <i className="circle icon" id="blue-circle"></i>
+                                Trasy niebieskie: {resort.blueSlopes} 
                                 <br></br>
-                                Czerwone: {resort.redSlopes}
+                                <i className="circle icon" id="red-circle"></i>
+                                Trasy czerwone: {resort.redSlopes}
                                 <br></br>
-                                Czarne: {resort.blackSlopes} 
+                                <i className="circle icon"></i>
+                                Trasy czarne: {resort.blackSlopes} 
                             </Card.Text>
                             </div>
 
                             </div>
+                            <div id="button-div">
                             <Button className="card-button">Więcej</Button>
+                            </div>
                         </Card.Body>
                     </Card>
                 </div>
