@@ -12,11 +12,11 @@ const Footer = () => {
                     <Col>
                     <h3>Kontakt</h3>
                     <h6>Napisz do mnie jeśli masz jakieś pytania</h6>
-                    <p>e-mail: <a href="mailto:tomasz.a.przybylski@gmail.com">tomasz.a.przybylski@gmail.com </a></p>
+                    <p>e-mail: <a href="mailto:tomasz.a.przybylski@gmail.com" className="link">tomasz.a.przybylski@gmail.com </a></p>
                     </Col>
                     <Col>
                     <h3>Twórca</h3>
-                    <p>Tomasz Przybylski <a href="https://github.com/tomaxo14">GitHub</a></p>
+                    <p>Tomasz Przybylski <a href="https://github.com/tomaxo14" className="link">GitHub</a></p>
                     </Col>
                 </Row>
             </Container>

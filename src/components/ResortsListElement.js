@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Button, CardGroup } from 'react-bootstrap';
 import '../styles/ResortsListElement.css';
+import {Link} from 'react-router-dom';
 
 const ResortsListElement = (props) => {
 
@@ -10,10 +11,7 @@ const ResortsListElement = (props) => {
         if(countryName==="Czech Republic") return "Czechy"
         if(countryName==="Slovakia") return "Slovakia"
     }
-
     
-    
-
     return (<div>
         <CardGroup>
         {resorts_data.map(
@@ -54,7 +52,7 @@ const ResortsListElement = (props) => {
 
                             </div>
                             <div id="button-div">
-                            <Button className="card-button">Więcej</Button>
+                            <Link to={"/osrodek/" + resort.resortId}><Button className="card-button">Więcej</Button></Link>
                             </div>
                         </Card.Body>
                     </Card>

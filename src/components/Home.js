@@ -1,5 +1,4 @@
 import React from 'react';
-import "./NavBar";
 import NavBar from './NavBar';
 import CarouselImage from './CarouselImage';
 import HomeInfo from './HomeInfo';

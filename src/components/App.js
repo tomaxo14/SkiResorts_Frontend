@@ -7,6 +7,7 @@ import Home from './Home';
 import { Switch, BrowserRouter as Router, Route} from "react-router-dom";
 import '../styles/App.css';
 import ResortsList from "./ResortsList";
+import ResortDetails from "./ResortDetails";
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
           <Route path="/rejestracja" component={RegisterForm}/>
           <Route path="/profil" component={Profile}/>
           <Route path="/osrodki" component={ResortsList}/>
+          <Route path="/osrodek/:id" component={ResortDetails}/>
           <Route exact path="/" component={Home}/>
           </Switch>
       </div>

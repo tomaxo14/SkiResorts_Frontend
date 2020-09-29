@@ -7,6 +7,10 @@ class ResortService {
     getAllResorts(){
         return axios.get(API_URL + 'resorts');
     }
+
+    getResortById(id){
+        return axios.get(API_URL + 'resortDetails?resortId=' + id);
+    }
 }
 
 export default new ResortService;
