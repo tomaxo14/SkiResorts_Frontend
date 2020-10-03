@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AuthService from "../services/auth.service";
+import NavBar from "./NavBar";
 
 class Profile extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class Profile extends Component {
     const { currentUser } = this.state;
 
     return (
+      
       <div className="container">
         <header className="jumbotron">
           <h3>

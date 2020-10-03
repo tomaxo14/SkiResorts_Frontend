@@ -66,7 +66,7 @@ class LoginForm extends Component {
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.login, this.state.password).then(
         () => {
-          this.props.history.push("/profil");
+          this.props.history.push("/osrodki");
           window.location.reload();
         },
         error => {

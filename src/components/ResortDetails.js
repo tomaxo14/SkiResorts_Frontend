@@ -1,8 +1,14 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import ResortService from '../services/resort-service';
+import AuthService from '../services/auth.service';
 import NavBar from './NavBar';
 import '../styles/ResortDetails.css';
+import Talerzyk from "../img/ski_lift_icons/talerzyk.png";
+import Gondola from "../img/ski_lift_icons/gondola.png";
+import Kanapa from "../img/ski_lift_icons/kanapa.png";
+import Krzeslo from "../img/ski_lift_icons/krzeslo.png";
+import Orczyk from "../img/ski_lift_icons/orczyk.png";
 
 class ResortDetails extends React.Component {
 
@@ -11,24 +17,38 @@ class ResortDetails extends React.Component {
         this.state = {
             resort_details: [],
             hasWebsite: false,
-            location: []
+            location: [],
+            currentUser: undefined,
+            ratings: []
         }
     }
 
     async componentDidMount() {
         const resort = await ResortService.getResortById(this.props.match.params.id);
-        this.setState({ resort_details: resort.data, location: resort.data.location });
+        const user = AuthService.getCurrentUser();
+        this.setState({ resort_details: resort.data, location: resort.data.location, currentUser: user, ratings: user.ratings});
         console.log(resort);
+        console.log(user);
         if(this.state.resort_details.website!=null){
             this.setState({hasWebsite: true});
         }
+    }
+
+    ratedByUser() {
+        var i;
+        for(i=0; i<this.state.ratings.length; i++) {
+            if(this.state.ratings[i].resort===this.state.resort_details.resortId) {
+                return this.state.ratings[i].value;
+            }
+        }
+        return " Nie oceniono"
+
     }
 
     render() {
         return (
             <div>
                 <NavBar></NavBar>
-                
                 <Container className="container">
                     <Row className="row">
                         <Col xs={6} md={4}>
@@ -36,7 +56,13 @@ class ResortDetails extends React.Component {
                             Średnia ocen: {this.state.resort_details.avgRating}
                             <br></br>
                             <i className="hand point up icon"></i>
-                            Twoja ocena: null
+                            Twoja ocena:
+                                {this.state.currentUser===undefined ? (
+                                    " Zaloguj się, aby wystawić ocenę"
+                                ) : (
+                                    this.ratedByUser()
+                                )
+                                }
                         </Col>
                         <Col xs={6} md={4} id="title-column">
                             <h1>{this.state.resort_details.name}</h1>
@@ -68,15 +94,19 @@ class ResortDetails extends React.Component {
                                 Trasy czarne: {this.state.resort_details.blackSlopes} 
                             </p>
                             <p>
+                                <img src={Gondola} width="12" height="15" className="lifts-img"></img>
                                 Gondole: {this.state.resort_details.gondolas}
                             </p>
                             <p>
+                                <img src={Kanapa} width="15" height="15" className="lifts-img"></img>
                                 Kanapy: {this.state.resort_details.chairlifts}
                             </p>
                             <p>
+                                <img src={Orczyk} width="15" height="15" className="lifts-img"></img>
                                 Orczyki: {this.state.resort_details.tbars}
                             </p>
                             <p>
+                                <img src={Talerzyk} width="15" height="15" className="lifts-img"></img>
                                 Wyciągi talerzowe: {this.state.resort_details.platters}
                             </p>
                             <p>
