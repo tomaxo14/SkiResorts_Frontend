@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import ResortService from '../services/resort-service';
 import AuthService from '../services/auth.service';
 import NavBar from './NavBar';
+import Opinion from './Opinion'
 import '../styles/ResortDetails.css';
 import Talerzyk from "../img/ski_lift_icons/talerzyk.png";
 import Gondola from "../img/ski_lift_icons/gondola.png";
@@ -19,16 +20,19 @@ class ResortDetails extends React.Component {
             hasWebsite: false,
             location: [],
             currentUser: undefined,
-            ratings: []
+            ratings: [],
+            opinions: []
         }
     }
 
     async componentDidMount() {
         const resort = await ResortService.getResortById(this.props.match.params.id);
         const user = AuthService.getCurrentUser();
-        this.setState({ resort_details: resort.data, location: resort.data.location, currentUser: user, ratings: user.ratings});
+        this.setState({ resort_details: resort.data, location: resort.data.location, currentUser: user, ratings: user.ratings,
+             opinions: resort.data.opinions});
         console.log(resort);
         console.log(user);
+        console.log(this.state.opinions);
         if(this.state.resort_details.website!=null){
             this.setState({hasWebsite: true});
         }
@@ -124,7 +128,10 @@ class ResortDetails extends React.Component {
                         </Col>
                     </Row>
                     <Row className="row">
-                        <Col xs={6}>xs=6</Col>
+                        <Col xs={6}>
+                            <h3>Opinie</h3>
+                            <Opinion opinions={this.state.opinions} />
+                        </Col>
                         <Col xs={6}>xs=6</Col>
                     </Row>
                 </Container>
