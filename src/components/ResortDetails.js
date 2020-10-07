@@ -2,7 +2,9 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import ResortService from '../services/resort-service';
 import AuthService from '../services/auth.service';
+import UserService from '../services/user.service';
 import NavBar from './NavBar';
+import RateResort from './RateResort';
 import Opinion from './Opinion'
 import '../styles/ResortDetails.css';
 import Talerzyk from "../img/ski_lift_icons/talerzyk.png";
@@ -28,11 +30,13 @@ class ResortDetails extends React.Component {
     async componentDidMount() {
         const resort = await ResortService.getResortById(this.props.match.params.id);
         const user = AuthService.getCurrentUser();
-        this.setState({ resort_details: resort.data, location: resort.data.location, currentUser: user, ratings: user.ratings,
+        const ratings = await UserService.yourRatings();
+        this.setState({ resort_details: resort.data, location: resort.data.location, currentUser: user, ratings: ratings.data,
              opinions: resort.data.opinions});
         console.log(resort);
         console.log(user);
         console.log(this.state.opinions);
+        console.log(this.state.ratings);
         if(this.state.resort_details.website!=null){
             this.setState({hasWebsite: true});
         }
@@ -42,11 +46,17 @@ class ResortDetails extends React.Component {
         var i;
         for(i=0; i<this.state.ratings.length; i++) {
             if(this.state.ratings[i].resort===this.state.resort_details.resortId) {
-                return this.state.ratings[i].value;
+                return " " + this.state.ratings[i].value;
             }
         }
         return " Nie oceniono"
 
+    }
+
+    polishCountryName (countryName) {
+        if(countryName==="Poland") return "Polska"
+        if(countryName==="Czech Republic") return "Czechy"
+        if(countryName==="Slovakia") return "Slovakia"
     }
 
     render() {
@@ -70,10 +80,10 @@ class ResortDetails extends React.Component {
                         </Col>
                         <Col xs={6} md={4} id="title-column">
                             <h1>{this.state.resort_details.name}</h1>
-                            <h3>{this.state.location.country}</h3>
+                            <h3>{this.polishCountryName(this.state.location.country)}</h3>
                         </Col>
                         <Col xs={6} md={4}>
-                            
+                            <RateResort  resortId={this.state.resort_details.resortId} ></RateResort>
                         </Col>
                     </Row>
                     <Row className="row">
@@ -127,11 +137,16 @@ class ResortDetails extends React.Component {
 
                         </Col>
                     </Row>
-                    <Row className="row">
+                    <Row id="third-row">
                         <Col xs={6}>
                             <h3>Opinie</h3>
-                            <Opinion opinions={this.state.opinions} />
-                        </Col>
+                            {this.state.opinions!=null ? (
+                            <Opinion opinions={this.state.opinions}/>
+                            ) : (
+                                <h5>Brak opinii</h5>
+                            )
+                            }
+                            </Col>
                         <Col xs={6}>xs=6</Col>
                     </Row>
                 </Container>
