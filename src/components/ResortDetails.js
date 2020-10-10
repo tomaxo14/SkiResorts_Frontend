@@ -23,7 +23,7 @@ class ResortDetails extends React.Component {
             location: [],
             currentUser: undefined,
             ratings: [],
-            opinions: []
+            opinions: [],
         }
     }
 
@@ -40,6 +40,15 @@ class ResortDetails extends React.Component {
         if(this.state.resort_details.website!=null){
             this.setState({hasWebsite: true});
         }
+    }
+    
+
+    async updateAfterAction(resortId) {
+        const resort = await ResortService.getResortById(resortId);
+        console.log(resort);
+        const ratings = await UserService.yourRatings();
+        this.setState({ratings: ratings.data,
+             opinions: resort.data.opinions});
     }
 
     ratedByUser() {
@@ -83,7 +92,7 @@ class ResortDetails extends React.Component {
                             <h3>{this.polishCountryName(this.state.location.country)}</h3>
                         </Col>
                         <Col xs={6} md={4}>
-                            <RateResort  resortId={this.state.resort_details.resortId} ></RateResort>
+                            <RateResort  resortId={this.state.resort_details.resortId} afterRate={() => this.updateAfterAction(this.state.resort_details.resortId)}></RateResort>
                         </Col>
                     </Row>
                     <Row className="row">

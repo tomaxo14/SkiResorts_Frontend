@@ -1,24 +1,34 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
-const MyModal = (props) => {
+class MyModal extends React.Component {
 
+    constructor(props){
+        super(props);
+    }
+    render(){
     return (
         <div>
-            <Modal.Dialog>
+            <Modal
+            {...this.props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
                 <Modal.Header closeButton>
-                    <Modal.Title>{props.title}</Modal.Title>
+                    <Modal.Title>{this.props.title}</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
-                    <p>{props.body}</p>
+                    <p>{this.props.body}</p>
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="primary">Rozumiem</Button>
+                    <Button variant="primary" onClick={() => {this.props.onHide(); this.props.afterRate()}}>Rozumiem</Button>
                 </Modal.Footer>
-            </Modal.Dialog>
+            </Modal>
         </div>
     )
+    }
 }
 export default MyModal;

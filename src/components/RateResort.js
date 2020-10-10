@@ -14,7 +14,7 @@ const RateResort = (props) =>  {
 
     const [value, setValue] = React.useState(2);
     const [message, setMessage] = React.useState();
-    const API_URL_BASIC = `http://localhost:8080/`;
+    const [show, setShow] = React.useState(false);
 
     function onInputChange(event) {
         setMessage(event.target.value);
@@ -23,6 +23,7 @@ const RateResort = (props) =>  {
 
     function onSubmit() {
         UserService.rateResort(props.resortId, value, message);
+        setShow(true);
     //     console.log("Kliknieto submit");
     //     axios.post(API_URL_BASIC + `rateResort?resortId=` + props.resortId + `&value=` + value + `&message=` + message, {headers: authHeader()})
     // .then(res => {
@@ -35,7 +36,19 @@ const RateResort = (props) =>  {
     //     let url = API_URL_BASIC + `rateResort?resortId=` + props.resortId + `&value=` + value + `&message=` + message;
 
     //     fetch(url,options).then(res => console.log(res));
-        return (<MyModal title="Powiadomienie" body="test"></MyModal>)
+    // return(
+    //     <div>
+    //     <MyModal title="Powiadomienie" body="test"></MyModal>
+    //     </div>
+    // )
+    }
+
+    function modalClose() {
+        setShow(false);
+    }
+
+    function afterRate() {
+        props.afterRate();
     }
 
     return (
@@ -54,9 +67,15 @@ const RateResort = (props) =>  {
             <textarea rows="5" cols="50" onChange={onInputChange} placeholder="Oprócz oceny możesz dodać opinię" id="opinion">
             </textarea>
             {message == '' || message == undefined ? (
+                <div>
                 <Button onClick={onSubmit} id="rate-button">Zapisz ocenę</Button>
+                <MyModal title="Powiadomienie" body="Dodano ocenę" show={show} />
+                </div>
             ) : (
+                <div>
                 <Button onClick={onSubmit}>Zapisz ocenę i opinię</Button>
+                <MyModal title="Powiadomienie" body="Dodano ocenę i opinię" show={show} onHide={modalClose} afterRate={afterRate} />
+                </div>
             )}
 
         </div>
