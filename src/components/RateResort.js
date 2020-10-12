@@ -45,6 +45,7 @@ const RateResort = (props) =>  {
 
     function modalClose() {
         setShow(false);
+        afterRate();
     }
 
     function afterRate() {
@@ -69,12 +70,12 @@ const RateResort = (props) =>  {
             {message == '' || message == undefined ? (
                 <div>
                 <Button onClick={onSubmit} id="rate-button">Zapisz ocenę</Button>
-                <MyModal title="Powiadomienie" body="Dodano ocenę" show={show} />
+                <MyModal title="Powiadomienie" body="Dodano ocenę" show={show} onHide={modalClose}  />
                 </div>
             ) : (
                 <div>
                 <Button onClick={onSubmit}>Zapisz ocenę i opinię</Button>
-                <MyModal title="Powiadomienie" body="Dodano ocenę i opinię" show={show} onHide={modalClose} afterRate={afterRate} />
+                <MyModal title="Powiadomienie" body="Dodano ocenę i opinię" show={show} onHide={modalClose}  />
                 </div>
             )}
 

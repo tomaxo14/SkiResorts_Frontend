@@ -32,8 +32,30 @@ class UserService {
       fetch(url,options).then(res => console.log(res));
   }
 
+  async addFavourite(resortId) {
+    let options = {
+      method: 'POST',
+      headers : authHeader()
+      };
+      let url = API_URL_BASIC + `addFavourite?resortId=` + resortId;
+      fetch(url,options).then(res => console.log(res));
+  }
+
+  async deleteFavourite(resortId) {
+    let options = {
+      method: 'POST',
+      headers : authHeader()
+      };
+      let url = API_URL_BASIC + `deleteFavourite?resortId=` + resortId;
+      fetch(url,options).then(res => console.log(res));
+  }
+
   yourRatings() {
     return axios.get(API_URL_BASIC + `yourRatings`, { headers: authHeader()});
+  }
+
+  yourFavourites() {
+    return axios.get(API_URL_BASIC + `yourFavourites`, { headers: authHeader()});
   }
 
 
