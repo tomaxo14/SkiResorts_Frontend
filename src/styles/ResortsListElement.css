@@ -28,6 +28,31 @@
     text-align: center;
 }
 
-#card-group-div {
-    align-items: center;
+#card-group {
+    margin-left: 40px;
+}
+
+.form-control {
+    width: 130px;
+    /* margin-left: 30px; */
+}
+
+
+.filter-button {
+    margin-left: 30px;
+    width: 130px;
+    height: 35px;
+    background-color:#4FADE3;
+}
+
+.option-row {
+    height: 5px;
+}
+
+th {
+    text-align: center;
+}
+
+th, td {
+    padding-left: 20px;
 }
