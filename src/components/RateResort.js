@@ -22,8 +22,10 @@ const RateResort = (props) =>  {
     }
 
     function onSubmit() {
-        UserService.rateResort(props.resortId, value, message);
-        setShow(true);
+        if (props.user!==undefined) {
+            UserService.rateResort(props.resortId, value, message);
+            setShow(true);
+        }
     //     console.log("Kliknieto submit");
     //     axios.post(API_URL_BASIC + `rateResort?resortId=` + props.resortId + `&value=` + value + `&message=` + message, {headers: authHeader()})
     // .then(res => {
@@ -67,17 +69,25 @@ const RateResort = (props) =>  {
             </Box>
             <textarea rows="5" cols="50" onChange={onInputChange} placeholder="Oprócz oceny możesz dodać opinię" id="opinion">
             </textarea>
-            {message == '' || message == undefined ? (
-                <div>
-                <Button onClick={onSubmit} id="rate-button">Zapisz ocenę</Button>
-                <MyModal title="Powiadomienie" body="Dodano ocenę" show={show} onHide={modalClose}  />
-                </div>
+            {props.user===undefined || props.user===null ? (
+                <Button href="/logowanie" id="rate-button">Zaloguj się aby wystawić ocenę</Button>
             ) : (
                 <div>
-                <Button onClick={onSubmit}>Zapisz ocenę i opinię</Button>
-                <MyModal title="Powiadomienie" body="Dodano ocenę i opinię" show={show} onHide={modalClose}  />
+                {message == '' || message == undefined ? (
+                <div>
+                    <Button onClick={onSubmit} id="rate-button">Zapisz ocenę</Button>
+                    <MyModal title="Powiadomienie" body="Dodano ocenę" show={show} onHide={modalClose}  />
                 </div>
+                ) : (
+                    <div>
+                        <Button onClick={onSubmit}>Zapisz ocenę i opinię</Button>
+                        <MyModal title="Powiadomienie" body="Dodano ocenę i opinię" show={show} onHide={modalClose}  />
+                    </div>
             )}
+            </div>
+            )
+            }
+            
 
         </div>
     

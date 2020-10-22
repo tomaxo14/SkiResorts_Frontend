@@ -43,44 +43,48 @@ class ResortDetails extends React.Component {
         const user = AuthService.getCurrentUser();
         var ratings = undefined;
         var favourites = undefined;
-        if(user!=undefined){
+        if (user != undefined) {
             ratings = await UserService.yourRatings();
             favourites = await UserService.yourFavourites();
-            this.setState({ratings: ratings.data, favourites: favourites.data})
+            this.setState({ ratings: ratings.data, favourites: favourites.data })
         }
-        this.setState({ resort_details: resort.data, location: resort.data.location, currentUser: user,
-             opinions: resort.data.opinions});
+        this.setState({
+            resort_details: resort.data, location: resort.data.location, currentUser: user,
+            opinions: resort.data.opinions
+        });
         var i;
-        for(i=0; i<this.state.favourites.length; i++) {
-            if(this.state.favourites[i].resortId===this.state.resort_details.resortId) {
-                this.setState({favouriteMessage: "Ośrodek należy do Twoich ulubionych", inFavourites: true});
+        for (i = 0; i < this.state.favourites.length; i++) {
+            if (this.state.favourites[i].resortId === this.state.resort_details.resortId) {
+                this.setState({ favouriteMessage: "Ośrodek należy do Twoich ulubionych", inFavourites: true });
             }
         }
-        if(this.state.inFavourites===false){
-            this.setState({favouriteMessage: "Chcesz dodać ten ośrodek do ulubionych? "}); 
+        if (this.state.inFavourites === false) {
+            this.setState({ favouriteMessage: "Chcesz dodać ten ośrodek do ulubionych? " });
         }
         console.log(resort);
         console.log(user);
         console.log(this.state.opinions);
         console.log(this.state.ratings);
-        if(this.state.resort_details.website!=null){
-            this.setState({hasWebsite: true});
+        if (this.state.resort_details.website != null) {
+            this.setState({ hasWebsite: true });
         }
     }
-    
+
 
     async updateAfterAction(resortId) {
         const resort = await ResortService.getResortById(resortId);
         console.log(resort);
         const ratings = await UserService.yourRatings();
-        this.setState({ratings: ratings.data,
-             opinions: resort.data.opinions});
+        this.setState({
+            ratings: ratings.data,
+            opinions: resort.data.opinions
+        });
     }
 
     ratedByUser() {
         var i;
-        for(i=0; i<this.state.ratings.length; i++) {
-            if(this.state.ratings[i].resort===this.state.resort_details.resortId) {
+        for (i = 0; i < this.state.ratings.length; i++) {
+            if (this.state.ratings[i].resort === this.state.resort_details.resortId) {
                 return " " + this.state.ratings[i].value;
             }
         }
@@ -100,24 +104,27 @@ class ResortDetails extends React.Component {
     //     return "Chcesz dodać ten ośrodek do ulubionych? " 
     // }
 
-    polishCountryName (countryName) {
-        if(countryName==="Poland") return "Polska"
-        if(countryName==="Czech Republic") return "Czechy"
-        if(countryName==="Slovakia") return "Slovakia"
+    polishCountryName(countryName) {
+        if (countryName === "Poland") return "Polska"
+        if (countryName === "Czech Republic") return "Czechy"
+        if (countryName === "Slovakia") return "Slovakia"
     }
 
-    onClickFavButton(){
+    onClickFavButton() {
         UserService.addFavourite(this.state.resort_details.resortId);
-        this.setState({addFavModal: true})
+        this.setState({ addFavModal: true })
     }
 
-    onClickDeleteFavButton(){
+    onClickDeleteFavButton() {
         UserService.deleteFavourite(this.state.resort_details.resortId);
-        this.setState({deleteFavModal: true})
+        this.setState({ deleteFavModal: true })
     }
 
     afterAddFav() {
-        this.setState({addFavModal: false, favouriteMessage: "Ośrodek należy do Twoich ulubionych", inFavourites: true});
+        // if(this.state.currentUser===undefined||this.state.currentUser===null) {
+        //     this.setState({addFavModal: false, favouriteMessage: "Musisz się zalogować aby dodać ośrodek do ulubionych"});
+        // }
+        this.setState({ addFavModal: false, favouriteMessage: "Ośrodek należy do Twoich ulubionych", inFavourites: true });
         // var favourites = undefined;
         // if(user!=undefined){
         //     favourites = await UserService.yourFavourites();
@@ -135,21 +142,21 @@ class ResortDetails extends React.Component {
     }
 
     afterDeleteFav() {
-        this.setState({deleteFavModal: false, favouriteMessage: "Chcesz dodać ten ośrodek do ulubionych? ", inFavourites: false});
-    //     var favourites = undefined;
-    //     if(user!=undefined){
-    //         favourites = await UserService.yourFavourites();
-    //         this.setState({favourites: favourites.data})
-    //     }
+        this.setState({ deleteFavModal: false, favouriteMessage: "Chcesz dodać ten ośrodek do ulubionych? ", inFavourites: false });
+        //     var favourites = undefined;
+        //     if(user!=undefined){
+        //         favourites = await UserService.yourFavourites();
+        //         this.setState({favourites: favourites.data})
+        //     }
 
-    //     for(i=0; i<this.state.favourites.length; i++) {
-    //         if(this.state.favourites[i].resortId===this.state.resort_details.resortId) {
-    //             this.setState({favouriteMessage: "Ośrodek należy do Twoich ulubionych", inFavourites: true});
-    //         }
-    //     }
-    //     if(this.state.inFavourites===false){
-    //         this.setState({favouriteMessage: "Chcesz dodać ten ośrodek do ulubionych? "}); 
-    //     }
+        //     for(i=0; i<this.state.favourites.length; i++) {
+        //         if(this.state.favourites[i].resortId===this.state.resort_details.resortId) {
+        //             this.setState({favouriteMessage: "Ośrodek należy do Twoich ulubionych", inFavourites: true});
+        //         }
+        //     }
+        //     if(this.state.inFavourites===false){
+        //         this.setState({favouriteMessage: "Chcesz dodać ten ośrodek do ulubionych? "}); 
+        //     }
 
         this.setState({})
     }
@@ -166,31 +173,43 @@ class ResortDetails extends React.Component {
                             <br></br>
                             <i className="hand point up icon"></i>
                             Twoja ocena:
-                                {this.state.currentUser===undefined || this.state.currentUser===null ? (
-                                    " Zaloguj się, aby wystawić ocenę"
-                                ) : (
+                                {this.state.currentUser === undefined || this.state.currentUser === null ? (
+                                " Zaloguj się, aby wystawić ocenę"
+                            ) : (
                                     this.ratedByUser()
                                 )
-                                }
+                            }
 
                             <p>
-                                {this.state.currentUser===undefined || this.state.currentUser===null ? (
-                                    "Zaloguj się, aby dodać do ulubionych"
+                                {this.state.currentUser === undefined || this.state.currentUser === null ? (
+                                    <p>
+                                        <br></br>
+                                        <Button href="/logowanie" className="button">Zaloguj się aby dodać ośrodek do ulubionych</Button>
+                                    </p>
                                 ) : (
-                                    this.state.favouriteMessage
-                                )
+                                        <p>
+                                            <br></br>
+                                            <i className="heart icon"></i>
+                                            {this.state.favouriteMessage}
+                                            
+                                            {this.state.inFavourites === true ? (
+                                                <p>
+                                                    <br></br>
+                                                    <Button className="button" onClick={this.onClickDeleteFavButton}>Usuń ośrodek z ulubionych</Button>
+                                                    <MyModal title="Powiadomienie" body="Usunięto ośrodek z ulubionych" show={this.state.deleteFavModal} onHide={this.afterDeleteFav} />
+                                                </p>
+                                            ) : (
+                                                    <p>
+                                                        <br></br>
+                                                        <Button className="button" onClick={this.onClickFavButton}>Dodaj ośrodek do ulubionych</Button>
+                                                        <MyModal title="Powiadomienie" body="Dodano ośrodek do ulubionych" show={this.state.addFavModal} onHide={this.afterAddFav} />
+                                                    </p>
+                                                )}
+                                        </p>
+                                    )
                                 }
-                                {this.state.inFavourites===true ? (
-                                    <p>
-                                    <Button onClick={this.onClickDeleteFavButton}>Usuń ośrodek z ulubionych</Button>
-                                    <MyModal title="Powiadomienie" body="Usunięto ośrodek z ulubionych" show={this.state.deleteFavModal} onHide={this.afterDeleteFav} />
-                                    </p>
-                                ) : (
-                                    <p>
-                                    <Button onClick={this.onClickFavButton}>Dodaj ośrodek do ulubionych</Button>
-                                    <MyModal title="Powiadomienie" body="Dodano ośrodek do ulubionych" show={this.state.addFavModal} onHide={this.afterAddFav} />
-                                    </p>
-                                )}
+
+
                             </p>
                         </Col>
                         <Col xs={6} md={4} id="title-column">
@@ -198,7 +217,7 @@ class ResortDetails extends React.Component {
                             <h3>{this.polishCountryName(this.state.location.country)}</h3>
                         </Col>
                         <Col xs={6} md={4}>
-                            <RateResort  resortId={this.state.resort_details.resortId} afterRate={() => this.updateAfterAction(this.state.resort_details.resortId)}></RateResort>
+                            <RateResort resortId={this.state.resort_details.resortId} afterRate={() => this.updateAfterAction(this.state.resort_details.resortId)} user={this.state.currentUser}></RateResort>
                         </Col>
                     </Row>
                     <Row className="row">
@@ -207,12 +226,12 @@ class ResortDetails extends React.Component {
                                 <p>
                                     <i className="globe icon"></i>
                                     Strona internetowa: {this.state.resort_details.website}
-                                </p> ) : (
+                                </p>) : (
                                     <br></br>
-                            )}
+                                )}
                             <p>
                                 <i className="circle icon" id="blue-circle"></i>
-                                Trasy niebieskie: {this.state.resort_details.blueSlopes} 
+                                Trasy niebieskie: {this.state.resort_details.blueSlopes}
                             </p>
                             <p>
                                 <i className="circle icon" id="red-circle"></i>
@@ -220,7 +239,7 @@ class ResortDetails extends React.Component {
                             </p>
                             <p>
                                 <i className="circle icon"></i>
-                                Trasy czarne: {this.state.resort_details.blackSlopes} 
+                                Trasy czarne: {this.state.resort_details.blackSlopes}
                             </p>
                             <p>
                                 <img src={Gondola} width="12" height="15" className="lifts-img"></img>
@@ -248,20 +267,20 @@ class ResortDetails extends React.Component {
                             </p>
                         </Col>
                         <Col xs={8} md={6}>
-                        <img src={this.state.resort_details.skiMap} id="skiMap" width="400" height="306"></img>
+                            <img src={this.state.resort_details.skiMap} id="skiMap" width="400" height="306"></img>
 
                         </Col>
                     </Row>
                     <Row id="third-row">
                         <Col xs={6}>
                             <h3>Opinie</h3>
-                            {this.state.opinions!=null ? (
-                            <Opinion opinions={this.state.opinions}/>
+                            {this.state.opinions != null ? (
+                                <Opinion opinions={this.state.opinions} />
                             ) : (
-                                <h5>Brak opinii</h5>
-                            )
+                                    <h5>Brak opinii</h5>
+                                )
                             }
-                            </Col>
+                        </Col>
                         <Col xs={6}>xs=6</Col>
                     </Row>
                 </Container>
