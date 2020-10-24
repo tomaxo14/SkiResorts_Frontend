@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import { WiDaySunny } from "weather-icons-react";
 import ResortService from '../services/resort-service';
 import AuthService from '../services/auth.service';
 import UserService from '../services/user.service';
@@ -13,6 +14,7 @@ import Gondola from "../img/ski_lift_icons/gondola.png";
 import Kanapa from "../img/ski_lift_icons/kanapa.png";
 import Krzeslo from "../img/ski_lift_icons/krzeslo.png";
 import Orczyk from "../img/ski_lift_icons/orczyk.png";
+import { decomposeColor } from '@material-ui/core';
 
 class ResortDetails extends React.Component {
 
@@ -29,7 +31,12 @@ class ResortDetails extends React.Component {
             inFavourites: false,
             favouriteMessage: undefined,
             addFavModal: false,
-            deleteFavModal: false
+            deleteFavModal: false,
+            weather: [],
+            mainWeather: [],
+            wind: [],
+            clouds: [],
+            weatherDescription: []
         }
 
         this.onClickFavButton = this.onClickFavButton.bind(this);
@@ -68,6 +75,10 @@ class ResortDetails extends React.Component {
         if (this.state.resort_details.website != null) {
             this.setState({ hasWebsite: true });
         }
+        const weather = await ResortService.getWeather(this.state.location.latitude, this.state.location.longitude);
+        console.log(weather);
+        this.setState({weather: weather.data, mainWeather: weather.data.main, wind: weather.data.wind, clouds: weather.data.clouds,
+        weatherDescription: weather.data.weather});
     }
 
 
@@ -92,17 +103,6 @@ class ResortDetails extends React.Component {
 
     }
 
-    // inUserFavourites() {
-    //     var i;
-    //     for(i=0; i<this.state.favourites.length; i++) {
-    //         if(this.state.favourites[i].resortId===this.state.resort_details.resortId) {
-    //             this.setState({inFavourites: true});
-    //             return "Ośrodek należy do Twoich ulubionych"
-    //         }
-    //     }
-    //     this.setState({inFavourites: false});
-    //     return "Chcesz dodać ten ośrodek do ulubionych? " 
-    // }
 
     polishCountryName(countryName) {
         if (countryName === "Poland") return "Polska"
@@ -121,44 +121,11 @@ class ResortDetails extends React.Component {
     }
 
     afterAddFav() {
-        // if(this.state.currentUser===undefined||this.state.currentUser===null) {
-        //     this.setState({addFavModal: false, favouriteMessage: "Musisz się zalogować aby dodać ośrodek do ulubionych"});
-        // }
         this.setState({ addFavModal: false, favouriteMessage: "Ośrodek należy do Twoich ulubionych", inFavourites: true });
-        // var favourites = undefined;
-        // if(user!=undefined){
-        //     favourites = await UserService.yourFavourites();
-        //     this.setState({favourites: favourites.data})
-        // }
-
-        // for(i=0; i<this.state.favourites.length; i++) {
-        //     if(this.state.favourites[i].resortId===this.state.resort_details.resortId) {
-        //         this.setState({favouriteMessage: "Ośrodek należy do Twoich ulubionych", inFavourites: true});
-        //     }
-        // }
-        // if(this.state.inFavourites===false){
-        //     this.setState({favouriteMessage: "Chcesz dodać ten ośrodek do ulubionych? "}); 
-        // }
     }
 
     afterDeleteFav() {
         this.setState({ deleteFavModal: false, favouriteMessage: "Chcesz dodać ten ośrodek do ulubionych? ", inFavourites: false });
-        //     var favourites = undefined;
-        //     if(user!=undefined){
-        //         favourites = await UserService.yourFavourites();
-        //         this.setState({favourites: favourites.data})
-        //     }
-
-        //     for(i=0; i<this.state.favourites.length; i++) {
-        //         if(this.state.favourites[i].resortId===this.state.resort_details.resortId) {
-        //             this.setState({favouriteMessage: "Ośrodek należy do Twoich ulubionych", inFavourites: true});
-        //         }
-        //     }
-        //     if(this.state.inFavourites===false){
-        //         this.setState({favouriteMessage: "Chcesz dodać ten ośrodek do ulubionych? "}); 
-        //     }
-
-        this.setState({})
     }
 
     render() {
@@ -221,7 +188,8 @@ class ResortDetails extends React.Component {
                         </Col>
                     </Row>
                     <Row className="row">
-                        <Col xs={8} md={6}>
+                        <Col xs={6} md={4}>
+                        <h3>Informacje</h3>
                             {this.state.hasWebsite ? (
                                 <p>
                                     <i className="globe icon"></i>
@@ -265,9 +233,11 @@ class ResortDetails extends React.Component {
                                 <i className="trophy icon"></i>
                                 Snowpark: {this.state.resort_details.ifSnowPark}
                             </p>
+                            <WiDaySunny size='24'></WiDaySunny>
                         </Col>
-                        <Col xs={8} md={6}>
-                            <img src={this.state.resort_details.skiMap} id="skiMap" width="400" height="306"></img>
+                        <Col xs={10} md={8}>
+                        <h3>Mapa tras i wyciągów</h3>
+                        <a href={this.state.resort_details.skiMap}><img src={this.state.resort_details.skiMap} title="Kliknij aby powiększyć" alt="Mapa" id="skiMap" width="600" height="459"></img></a>
 
                         </Col>
                     </Row>
@@ -281,7 +251,50 @@ class ResortDetails extends React.Component {
                                 )
                             }
                         </Col>
-                        <Col xs={6}>xs=6</Col>
+                        <Col xs={6}>
+                        <h3>Aktualna pogoda</h3>
+                        <p>
+                            Temperatura: {this.state.mainWeather.temp}
+                        </p>
+                        <p>
+                            Temperatura odczuwalna: {this.state.mainWeather.feels_like}
+                        </p>
+                        <p>
+                            Wilgotność: {this.state.mainWeather.humidity}
+                            <span>%</span>
+                        </p>
+                        <p>
+                            Prędkość wiatru: {this.state.wind.speed}
+                            <span>&nbsp;m/s</span>
+                        </p>
+                        <p>
+                            Widoczność: {this.state.weather.visibility}
+                            <span>m</span>
+                        </p>
+                        <p>
+                            Chmury: {this.state.clouds.all}
+                            <span>%</span>
+                        </p>
+                        <div>
+                            Opis:
+                            {this.state.weatherDescription.map(
+                                desc => (
+                                <span key={desc.id}>
+                                  <span>&nbsp;</span>
+                                  {desc.description}
+                                  {this.state.weatherDescription.length>1 ? (
+                                    <span>,</span>
+                                  ):(
+                                    <span></span>
+                                  )}
+                                </span>
+
+                                )
+                            )
+                            }
+                        </div>
+
+                        </Col>
                     </Row>
                 </Container>
             </div>
