@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-
 import AuthService from "../services/auth.service";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
 
 const required = value => {
   if (!value) {
@@ -95,6 +96,8 @@ class LoginForm extends Component {
     const {login,password,message,loading} = this.state;
 
     return (
+      <div>
+      <NavBar></NavBar>
       <div className="col-md-12">
         <div className="card card-container">
           <img
@@ -160,6 +163,8 @@ class LoginForm extends Component {
             />
           </Form>
         </div>
+      </div>
+      <Footer></Footer>
       </div>
     );
   }

@@ -3,32 +3,73 @@
 }
 
 #first-caption-title {
-    font-size: 40px;
+    /* font-size: 40px; */
+    padding-top: 10px;
     color: black;
+    background-color: rgb(255, 255, 255, 0.6);
+    margin-bottom: 0px;
+    padding-bottom: 10px;
     /* -webkit-text-stroke-width: 1px; 
     -webkit-text-stroke-color: black;  */
     /* margin-bottom: 100px; */
 }
 
 #first-caption-text {
-    font-size: 25px;
+    font-size: 15px;
     font-weight: bold;
-    color: red;
+    color: black; 
     margin-bottom: 100px;
-    -webkit-text-stroke-width: 0.5px; 
-    -webkit-text-stroke-color: black; 
+    padding-bottom: 10px;
+    /* -webkit-text-stroke-width: 0.5px; 
+    -webkit-text-stroke-color: black;  */
+    background-color: rgb(255, 255, 255, 0.6);
+
 }
 
 #second-caption-title {
-    margin-top: 50px;
-    margin-left: 50px;
+    /* margin-top: 50px;
+    margin-left: 50px; */
+    background-color: rgb(255, 255, 255, 0.6);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#third-caption-title {
+    background-color: rgb(255, 255, 255, 0.7);
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #check-button {
     margin-right: 8px;
+    margin-bottom: 100px;
+    background-color: rgb(255, 255, 255, 0.6);
+}
+
+#check-button:hover {
+    font-weight: bold;
+    color: black; 
 }
 
 #signup-button {
     margin-left: 8px;
+    margin-bottom: 100px;
+    background-color: rgb(255, 255, 255, 0.6);
+}
+
+#signup-button:hover {
+    font-weight: bold;
+    color: black; 
+}
+
+#resort-button {
+    margin-bottom: 100px;
+    background-color: rgb(255, 255, 255, 0.6);
+    color: black !important;
+}
+
+#resort-button:hover {
+    font-weight: bold;
+    color: black; 
 }
 

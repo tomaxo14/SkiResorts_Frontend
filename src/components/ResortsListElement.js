@@ -86,7 +86,7 @@ const ResortsListElement = (props) => {
 
 
     return (<div>
-        <Container>
+        <Container id="filter-sort-container">
             <Row className="option-row">
                 <Col xs={2}><h4>Sortuj po:</h4></Col>
                 <Col xs={10}>

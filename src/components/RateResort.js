@@ -59,6 +59,7 @@ const RateResort = (props) =>  {
             <Box component="fieldset" mb={3} borderColor="transparent">
                 <Typography component="legend">Oceń ośrodek</Typography>
                 <Rating
+                    className="rating"
                     name="simple-controlled"
                     size="large"
                     value={value}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { WiDaySunny } from "weather-icons-react";
+import { WiDaySunny, WiThermometer, WiThermometerExterior, WiHumidity, WiStrongWind, WiHorizonAlt, WiCloudy, WiDust } from 'weather-icons-react';
 import ResortService from '../services/resort-service';
 import AuthService from '../services/auth.service';
 import UserService from '../services/user.service';
@@ -14,7 +14,6 @@ import Gondola from "../img/ski_lift_icons/gondola.png";
 import Kanapa from "../img/ski_lift_icons/kanapa.png";
 import Krzeslo from "../img/ski_lift_icons/krzeslo.png";
 import Orczyk from "../img/ski_lift_icons/orczyk.png";
-import { decomposeColor } from '@material-ui/core';
 
 class ResortDetails extends React.Component {
 
@@ -134,7 +133,7 @@ class ResortDetails extends React.Component {
                 <NavBar></NavBar>
                 <Container className="container">
                     <Row className="row">
-                        <Col xs={6} md={4}>
+                        <Col xs={7} md={3}>
                             <i className="star icon"></i>
                             Średnia ocen: {this.state.resort_details.avgRating}
                             <br></br>
@@ -179,16 +178,16 @@ class ResortDetails extends React.Component {
 
                             </p>
                         </Col>
-                        <Col xs={6} md={4} id="title-column">
+                        <Col xs={4} md={5} id="title-column">
                             <h1>{this.state.resort_details.name}</h1>
                             <h3>{this.polishCountryName(this.state.location.country)}</h3>
                         </Col>
-                        <Col xs={6} md={4}>
-                            <RateResort resortId={this.state.resort_details.resortId} afterRate={() => this.updateAfterAction(this.state.resort_details.resortId)} user={this.state.currentUser}></RateResort>
+                        <Col className="rate-resort" xs={7} md={4}>
+                            <RateResort  resortId={this.state.resort_details.resortId} afterRate={() => this.updateAfterAction(this.state.resort_details.resortId)} user={this.state.currentUser}></RateResort>
                         </Col>
                     </Row>
                     <Row className="row">
-                        <Col xs={6} md={4}>
+                        <Col xs={6} md={5}>
                         <h3>Informacje</h3>
                             {this.state.hasWebsite ? (
                                 <p>
@@ -233,9 +232,8 @@ class ResortDetails extends React.Component {
                                 <i className="trophy icon"></i>
                                 Snowpark: {this.state.resort_details.ifSnowPark}
                             </p>
-                            <WiDaySunny size='24'></WiDaySunny>
                         </Col>
-                        <Col xs={10} md={8}>
+                        <Col xs={10} md={7}>
                         <h3>Mapa tras i wyciągów</h3>
                         <a href={this.state.resort_details.skiMap}><img src={this.state.resort_details.skiMap} title="Kliknij aby powiększyć" alt="Mapa" id="skiMap" width="600" height="459"></img></a>
 
@@ -254,29 +252,37 @@ class ResortDetails extends React.Component {
                         <Col xs={6}>
                         <h3>Aktualna pogoda</h3>
                         <p>
-                            Temperatura: {this.state.mainWeather.temp}
+                            <WiThermometer size="20" className="weather-icon"></WiThermometer>
+                            Temperatura: <b>{this.state.mainWeather.temp} &#8451; </b>
                         </p>
                         <p>
-                            Temperatura odczuwalna: {this.state.mainWeather.feels_like}
+                            <WiThermometerExterior size="20" className="weather-icon"></WiThermometerExterior>
+                            Temperatura odczuwalna: <b> {this.state.mainWeather.feels_like} &#8451; </b>
                         </p>
                         <p>
-                            Wilgotność: {this.state.mainWeather.humidity}
-                            <span>%</span>
+                            <WiHumidity size="20" className="weather-icon"></WiHumidity>
+                            Wilgotność: <b> {this.state.mainWeather.humidity} 
+                            <span>%</span></b>
                         </p>
                         <p>
-                            Prędkość wiatru: {this.state.wind.speed}
-                            <span>&nbsp;m/s</span>
+                            <WiStrongWind size="20" className="weather-icon"></WiStrongWind>
+                            Prędkość wiatru: <b> {this.state.wind.speed} 
+                            <span>&nbsp;m/s</span></b>
                         </p>
                         <p>
-                            Widoczność: {this.state.weather.visibility}
-                            <span>m</span>
+                            <WiHorizonAlt size="20" className="weather-icon"></WiHorizonAlt>
+                            Widoczność: <b> {this.state.weather.visibility} 
+                            <span>m</span></b>
                         </p>
                         <p>
-                            Chmury: {this.state.clouds.all}
-                            <span>%</span>
+                            <WiCloudy size="20" className="weather-icon"></WiCloudy>
+                            Chmury: <b> {this.state.clouds.all} 
+                            <span>%</span></b>
                         </p>
                         <div>
+                            <WiDust size="20" className="weather-icon"></WiDust>
                             Opis:
+                            <b>
                             {this.state.weatherDescription.map(
                                 desc => (
                                 <span key={desc.id}>
@@ -292,6 +298,7 @@ class ResortDetails extends React.Component {
                                 )
                             )
                             }
+                            </b>
                         </div>
 
                         </Col>

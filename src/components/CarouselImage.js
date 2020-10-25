@@ -54,8 +54,8 @@ class CarouselImage extends React.Component {
                     />
 
                     <Carousel.Caption className="caption">
-                        <h3></h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        <h3 id="third-caption-title">W naszej bazie posiadamy 350 ośrodków z Polski, Czech i Słowacji!</h3>
+                        <a href="/osrodki"><Button id="resort-button" variant="outline-dark">Przejdź do ośrodków</Button></a>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>

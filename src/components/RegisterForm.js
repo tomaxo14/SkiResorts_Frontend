@@ -3,8 +3,10 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
-
 import AuthService from "../services/auth.service";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
+import { Navbar } from "react-bootstrap";
 
 const required = value => {
   if (!value) {
@@ -175,6 +177,8 @@ class RegisterForm extends Component {
 
   render() {
     return (
+      <div>
+        <NavBar></NavBar>
       <div className="col-md-12">
         <div className="card card-container">
           <img
@@ -293,6 +297,8 @@ class RegisterForm extends Component {
             />
           </Form>
         </div>
+      </div>
+      <Footer></Footer>
       </div>
     );
   }
