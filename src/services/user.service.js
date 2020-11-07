@@ -58,6 +58,16 @@ class UserService {
     return axios.get(API_URL_BASIC + `yourFavourites`, { headers: authHeader()});
   }
 
+  async addPreferences(blue, red, black, snowPark, location) {
+    let options = {
+      method: 'POST',
+      headers : authHeader()
+      };
+      let url = API_URL_BASIC + `addPreferences?blue=` + blue + `&red=` + red + `&black=` + black
+      + `&snowPark=` + snowPark + `&location=` + location;
+      fetch(url,options).then(res => console.log(res));
+  }
+
 
 }
 

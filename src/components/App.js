@@ -8,6 +8,7 @@ import { Switch, BrowserRouter as Router, Route} from "react-router-dom";
 import '../styles/App.css';
 import ResortsList from "./ResortsList";
 import ResortDetails from "./ResortDetails";
+import Preferences from "./Preferences";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <Route path="/osrodki" component={ResortsList}/>
           <Route path="/osrodek/:id" component={ResortDetails}/>
           <Route exact path="/" component={Home}/>
+          <Route path="/preferencje" component={Preferences}/>
           </Switch>
       </div>
       </Router>
