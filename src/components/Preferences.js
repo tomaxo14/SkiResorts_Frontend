@@ -1,9 +1,11 @@
 import React from 'react';
 import AuthService from '../services/auth.service';
 import UserService from '../services/user.service'
+import ResortService from '../services/resort-service'
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import {Container, Button} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 import Footer from './Footer';
 import NavBar from './NavBar';
 import '../styles/Preferences.css';
@@ -28,7 +30,7 @@ const marks = [
     {
         value: 5,
         label: 'Bardzo istotne',
-      },
+    },
   ];
 
 class Preferences extends React.Component {
@@ -41,14 +43,20 @@ class Preferences extends React.Component {
             red: 3,
             black: 3,
             snowPark: 3,
-            location: 3
+            location: 3,
+            hasPreferences: false
         }
         this.onSaveClick = this.onSaveClick.bind(this);
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         const user = AuthService.getCurrentUser();
         this.setState({ currentUser: user })
+        const preferences = await UserService.yourPreferences(); 
+        if (preferences!=null) {
+            this.setState({blue: preferences.data.blueSlopes, red: preferences.data.redSlopes, black: preferences.data.blackSlopes, 
+            snowPark: preferences.data.snowPark, location: preferences.data.location, hasPreferences: true})
+        }
     }
 
     onSaveClick() {
@@ -62,12 +70,20 @@ class Preferences extends React.Component {
             <NavBar></NavBar>
             <Container className="container">
                 <h2>Zaznacz jak ważna jest dla Ciebie każda z poniższych cech ośrodka. Następnie my zarekomendujemy ośrodki spełniające Twoje wymagania</h2>
+                {this.state.hasPreferences ? (
+                    <div>
+                    <br></br>
+                    <h4><i>Twoje zapisane preferencje są następujące:</i></h4>
+                    </div>
+                ) : (
+                    <h3></h3>
+                )}
                 <Typography id="discrete-slider" gutterBottom>
                     <b>Liczba tras niebieskich</b>
                 </Typography>
                 <Slider
                     className="slider"
-                    defaultValue={3}
+                    value={this.state.blue}
                     aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
                     step={1}
@@ -81,7 +97,7 @@ class Preferences extends React.Component {
                 </Typography>
                 <Slider
                     className="slider"
-                    defaultValue={3}
+                    value={this.state.red}
                     aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
                     step={1}
@@ -95,7 +111,7 @@ class Preferences extends React.Component {
                 </Typography>
                 <Slider
                     className="slider"
-                    defaultValue={3}
+                    value={this.state.black}
                     aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
                     step={1}
@@ -109,7 +125,7 @@ class Preferences extends React.Component {
                 </Typography>
                 <Slider
                     className="slider"
-                    defaultValue={3}
+                    value={this.state.snowPark}
                     aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
                     step={1}
@@ -123,7 +139,7 @@ class Preferences extends React.Component {
                 </Typography>
                 <Slider
                     className="slider"
-                    defaultValue={3}
+                    value={this.state.location}
                     aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
                     step={1}
@@ -132,7 +148,28 @@ class Preferences extends React.Component {
                     max={5}
                     onChange={(e, value) => this.setState({location: value})}
                 />
-                <Button onClick={this.onSaveClick}>Zapisz preferencje</Button>
+                <br></br>
+                <br></br>
+                {this.state.hasPreferences ? (
+                    <Button onClick={this.onSaveClick}>Zapisz nowe preferencje</Button>
+                ):(
+                    <Button onClick={this.onSaveClick}>Zapisz preferencje</Button>
+                )}
+                
+                <Link
+                to={{
+                    pathname: '/preferowaneOsrodki',
+                    blue: this.state.blue,
+                    red: this.state.red,
+                    black: this.state.black,
+                    snowPark: this.state.snowPark,
+                    location: this.state.location
+                 }}>    
+                <Button>
+                     Pokaż preferowane ośrodki
+                </Button>                
+                </Link>
+                
             </Container>
             <Footer></Footer>
             </div>

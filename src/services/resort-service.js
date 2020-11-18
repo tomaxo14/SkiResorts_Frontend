@@ -18,6 +18,11 @@ class ResortService {
         return axios.get(WEATHER_API_URL + lat + '&lon=' + long + WEATHER_API_URL_ENDING);
         
     }
+
+    getPreferredResorts(blue, red, black, snowPark, location) {
+        return axios.get(API_URL + 'preferredResorts?blue=' + blue + '&red=' + red + '&black=' + black + '&snowPark=' +
+        snowPark + '&location=' + location);
+    }
 }
 
 export default new ResortService;
