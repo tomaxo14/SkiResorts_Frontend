@@ -6,6 +6,7 @@ import AuthService from '../services/auth.service';
 import UserService from '../services/user.service';
 import NavBar from './NavBar';
 import RateResort from './RateResort';
+import FutureWeather from './FutureWeather';
 import Opinion from './Opinion';
 import MyModal from './MyModal';
 import '../styles/ResortDetails.css';
@@ -35,7 +36,9 @@ class ResortDetails extends React.Component {
             mainWeather: [],
             wind: [],
             clouds: [],
-            weatherDescription: []
+            weatherDescription: [],
+            futureWeatherDaily: [],
+            weatherReady: false
         }
 
         this.onClickFavButton = this.onClickFavButton.bind(this);
@@ -75,9 +78,12 @@ class ResortDetails extends React.Component {
             this.setState({ hasWebsite: true });
         }
         const weather = await ResortService.getWeather(this.state.location.latitude, this.state.location.longitude);
+        const futureWeather = await ResortService.getWeatherSevenDays(this.state.location.latitude, this.state.location.longitude);
         console.log(weather);
+        console.log(futureWeather);
         this.setState({weather: weather.data, mainWeather: weather.data.main, wind: weather.data.wind, clouds: weather.data.clouds,
-        weatherDescription: weather.data.weather});
+        weatherDescription: weather.data.weather, futureWeatherDaily:futureWeather.data.daily, weatherReady: true});
+        console.log(this.state.futureWeatherDaily);
     }
 
 
@@ -302,6 +308,13 @@ class ResortDetails extends React.Component {
                         </div>
 
                         </Col>
+                    </Row>
+                    <Row>
+                        {this.state.weatherReady ? (
+                            <FutureWeather weather={this.state.futureWeatherDaily}></FutureWeather> 
+                        ):(
+                            <p></p>
+                        )}
                     </Row>
                 </Container>
             </div>
