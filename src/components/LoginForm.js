@@ -5,12 +5,14 @@ import CheckButton from "react-validation/build/button";
 import AuthService from "../services/auth.service";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
+import {Grid} from "@material-ui/core";
+import "../styles/LoginForm.css";
 
 const required = value => {
   if (!value) {
     return (
       <div className="alert alert-danger" role="alert">
-        This field is required!
+        To pole jest wymagane!
       </div>
     );
   }
@@ -36,8 +38,8 @@ class LoginForm extends Component {
     switch (errorType) {
       case 'Network Error':
         return 'Błąd połączenia, spróbuj ponownie za jakiś czas !'
-      case "Error: Unauthorized":
-        return 'Niepoprawne dane logowania, spróbuj ponownie !'
+      case "Unauthorized":
+        return 'Niepoprawne dane logowania'
       default:
         return 'Błąd połączenia';
     }
@@ -74,7 +76,7 @@ class LoginForm extends Component {
           const resMessage =
             (error.response &&
               error.response.data &&
-              error.response.data.message) ||
+              error.response.data.error) ||
             error.message ||
             error.toString();
 
@@ -98,13 +100,9 @@ class LoginForm extends Component {
     return (
       <div>
       <NavBar></NavBar>
-      <div className="col-md-12">
+        <Grid className="grid">
         <div className="card card-container">
-          <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-            alt="profile-img"
-            className="profile-img-card"
-          />
+          <h3>Zaloguj się</h3>
 
           <Form
             onSubmit={this.handleLogin}
@@ -113,7 +111,7 @@ class LoginForm extends Component {
             }}
           >
             <div className="form-group">
-              <label htmlFor="username">Login</label>
+              <label className="form-label" htmlFor="username">Login</label>
               <Input
                 type="text"
                 className="form-control"
@@ -125,7 +123,7 @@ class LoginForm extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="password">Password</label>
+              <label className="form-label" htmlFor="password">Hasło</label>
               <Input
                 type="password"
                 className="form-control"
@@ -138,13 +136,14 @@ class LoginForm extends Component {
 
             <div className="form-group">
               <button
+                id="login-button"
                 className="btn btn-primary btn-block"
                 disabled={loading}
               >
                 {loading && (
                   <span className="spinner-border spinner-border-sm"></span>
                 )}
-                <span>Login</span>
+                <span>Zaloguj</span>
               </button>
             </div>
 
@@ -163,8 +162,8 @@ class LoginForm extends Component {
             />
           </Form>
         </div>
-      </div>
-      <Footer></Footer>
+        </Grid>
+      <div id="login-footer"><Footer></Footer></div>
       </div>
     );
   }

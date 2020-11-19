@@ -1,0 +1,28 @@
+.grid {
+    display: flex;
+    justify-content: center;
+}
+
+.card-container {
+    width: 40%;
+}
+
+.form-control {
+    width: 100% !important;
+}
+
+.form-label {
+    margin-top: 1.5em;
+}
+
+#login-button {
+    margin-top: 2.5em;
+}
+
+@media only screen and (min-height: 720px) {
+#login-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+}

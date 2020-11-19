@@ -6,7 +6,8 @@ import { isEmail } from "validator";
 import AuthService from "../services/auth.service";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
-import { Navbar } from "react-bootstrap";
+import {Grid} from "@material-ui/core";
+import '../styles/RegisterForm.css';
 
 const required = value => {
   if (!value) {
@@ -179,14 +180,12 @@ class RegisterForm extends Component {
     return (
       <div>
         <NavBar></NavBar>
-      <div className="col-md-12">
+        <Grid id="grid">
         <div className="card card-container">
-          <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-            alt="profile-img"
-            className="profile-img-card"
-          />
-
+          <div id="signup-text">
+          <h4>Zarejestruj się</h4>
+          <h6>i w pełni wykorzystaj aplikację PolandSki!</h6>
+          </div>
           <Form
             onSubmit={this.handleRegister}
             ref={c => {
@@ -270,7 +269,7 @@ class RegisterForm extends Component {
                 </div>
 
                 <div className="form-group">
-                  <button className="btn btn-primary btn-block">Sign Up</button>
+                  <button className="btn btn-primary btn-block">Zarejestruj</button>
                 </div>
               </div>
             )}
@@ -297,7 +296,7 @@ class RegisterForm extends Component {
             />
           </Form>
         </div>
-      </div>
+        </Grid>
       <Footer></Footer>
       </div>
     );

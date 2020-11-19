@@ -1,7 +1,8 @@
 import React from 'react';
 import Footer from './Footer';
 import NavBar from './NavBar';
-import ResortService from '../services/resort-service'
+import ResortService from '../services/resort-service';
+import PreferredResortsListElement from './PreferredResortsListElement';
 
 class PreferredResortsList extends React.Component {
 
@@ -12,7 +13,9 @@ class PreferredResortsList extends React.Component {
             red: this.props.location.red,
             black: this.props.location.black,
             snowPark: this.props.location.snowPark,
-            location: this.props.location.location
+            location: this.props.location.location,
+            isLoaded: false,
+            resortsWithPoints: []
         }
     }
 
@@ -20,16 +23,31 @@ class PreferredResortsList extends React.Component {
         console.log(this.state.blue);
         const preferredResorts = await ResortService.getPreferredResorts(this.state.blue, this.state.red, this.state.black,
             this.state.snowPark, this.state.location);
-       console.log(preferredResorts);
+        this.setState({isLoaded: true, resortsWithPoints: preferredResorts});
+        console.log(preferredResorts);
     }
 
     render() {
-        return (
-            <div>
-            <NavBar></NavBar>
-            <Footer></Footer>
-            </div>
-        )
+        if (!this.state.isLoaded) {
+            return (
+                <div>
+                    <NavBar></NavBar>
+                    <div className="ui segment">
+                        <div className="ui active inverted dimmer">
+                            <div className="ui text loader" id="loader">Ładowanie</div>
+                        </div>
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <NavBar></NavBar>
+                    <PreferredResortsListElement resortsWithPoints = {this.state.resortsWithPoints}></PreferredResortsListElement>
+                    <Footer></Footer>
+                </div>
+            )
+        }
     }
 }
 export default PreferredResortsList;

@@ -1,0 +1,14 @@
+#rating {
+    margin-top: -35px;
+    flex-direction: 'row';
+    justify-content: 'space-between';
+}
+
+#rating-text {
+    font-size: 18px;
+}
+
+#stats-icon {
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
