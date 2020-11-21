@@ -14,6 +14,8 @@ class PreferredResortsList extends React.Component {
             black: this.props.location.black,
             snowPark: this.props.location.snowPark,
             location: this.props.location.location,
+            userLat: this.props.userLat,
+            userLon: this.props.userLon,
             isLoaded: false,
             resortsWithPoints: []
         }
@@ -22,7 +24,7 @@ class PreferredResortsList extends React.Component {
     async componentDidMount() {
         console.log(this.state.blue);
         const preferredResorts = await ResortService.getPreferredResorts(this.state.blue, this.state.red, this.state.black,
-            this.state.snowPark, this.state.location);
+            this.state.snowPark, this.state.location, this.state.userLat, this.state.userLon);
         this.setState({isLoaded: true, resortsWithPoints: preferredResorts});
         console.log(preferredResorts);
     }

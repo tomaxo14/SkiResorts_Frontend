@@ -11,16 +11,33 @@ class ResortsList extends React.Component {
         super(props);
         this.state = {
             resorts_data: [],
-            isLoaded: false
+            isLoaded: false,
+            userLat: 0,
+            userLon: 0,
+            locationReady: false
         }
+        this.helperFunction = this.helperFunction.bind(this);
     }
 
     async componentDidMount() {
-        const resorts = await ResortService.getAllResorts();
-        this.setState({ resorts_data: resorts.data, isLoaded: true });
-        console.log(resorts);
+        navigator.geolocation.getCurrentPosition(this.helperFunction);
+        this.sleep(500).then(async() => {
+            const resorts = await ResortService.getAllResortsWithGeo(this.state.userLat, this.state.userLon);
+            this.setState({ resorts_data: resorts.data, isLoaded: true });
+            console.log(resorts);
+        })
+        // const resorts = await ResortService.getAllResortsWithGeo(this.state.userLat, this.state.userLon);
     }
 
+    async helperFunction(position){
+        const lat = await position.coords.latitude;
+        const long = await position.coords.longitude;
+        this.setState({userLat: lat, userLon: long});
+    }
+
+    sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
 
     render() {
         if (!this.state.isLoaded) {

@@ -11,6 +11,10 @@ class ResortService {
         return axios.get(API_URL + 'resorts');
     }
 
+    getAllResortsWithGeo(latitude, longitude) {
+        return axios.get(API_URL + 'resortsWithGeo?latitude=' + latitude + '&longitude=' + longitude);
+    }
+
     getResortById(id) {
         return axios.get(API_URL + 'resortDetails?resortId=' + id);
     }
@@ -24,9 +28,9 @@ class ResortService {
         return axios.get(WEATHER_API_URL_SEVEN_DAYS + lat + '&lon=' + long + WEATHER_API_URL_ENDING);
     }
 
-    getPreferredResorts(blue, red, black, snowPark, location) {
+    getPreferredResorts(blue, red, black, snowPark, location, userLat, userLon) {
         return axios.get(API_URL + 'preferredResorts?blue=' + blue + '&red=' + red + '&black=' + black + '&snowPark=' +
-        snowPark + '&location=' + location);
+        snowPark + '&location=' + location + '&userLat=' + userLat + '&userLon=' + userLon);
     }
 }
 
