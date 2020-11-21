@@ -29,3 +29,8 @@
 /* .rate-resort {
     padding-left: 80px;
 } */
+
+.map {
+    width: 300px;
+    height: 300px;
+}
