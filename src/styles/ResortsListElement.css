@@ -25,6 +25,7 @@
 }
 
 #button-div {
+    margin-top: -2em;
     text-align: center;
 }
 
@@ -55,6 +56,11 @@ th {
 
 th, td {
     padding-left: 20px;
+}
+
+#distance-div {
+    margin-top: 2em;
+    margin-bottom: -6em;
 }
 
 

@@ -14,8 +14,8 @@ class PreferredResortsList extends React.Component {
             black: this.props.location.black,
             snowPark: this.props.location.snowPark,
             location: this.props.location.location,
-            userLat: this.props.userLat,
-            userLon: this.props.userLon,
+            userLat: this.props.location.userLat,
+            userLon: this.props.location.userLon,
             isLoaded: false,
             resortsWithPoints: []
         }
@@ -45,7 +45,8 @@ class PreferredResortsList extends React.Component {
             return (
                 <div>
                     <NavBar></NavBar>
-                    <PreferredResortsListElement resortsWithPoints = {this.state.resortsWithPoints}></PreferredResortsListElement>
+                    <PreferredResortsListElement resortsWithPoints = {this.state.resortsWithPoints} userLat = {this.state.userLat}
+                     userLon = {this.state.userLon}></PreferredResortsListElement>
                     <Footer></Footer>
                 </div>
             )

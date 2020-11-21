@@ -78,6 +78,10 @@ class Preferences extends React.Component {
         console.log(this.state.userLat, this.state.userLon);
     }
 
+    // sleep = (milliseconds) => {
+    //     return new Promise(resolve => setTimeout(resolve, milliseconds))
+    // }
+
     onSaveClick() {
         console.log(this.state.blue, this.state.red, this.state.black, this.state.snowPark, this.state.location)
         UserService.addPreferences(this.state.blue, this.state.red, this.state.black, this.state.snowPark, this.state.location);

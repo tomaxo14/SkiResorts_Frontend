@@ -55,7 +55,7 @@ class ResortsList extends React.Component {
             return (
                 <div>
                     <NavBar></NavBar>
-                    <ResortsListElement resorts={this.state.resorts_data} />
+                    <ResortsListElement resorts={this.state.resorts_data} userLat={this.state.userLat} userLon={this.state.userLon} />
                     <Footer></Footer>
                 </div>
             )

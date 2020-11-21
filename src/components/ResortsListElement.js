@@ -95,6 +95,9 @@ const ResortsListElement = (props) => {
         }
     });
 
+    function truncate(value) {
+        return Math.floor(value * 10) / 10;
+    }
     // const sleep = (milliseconds) => {
     //     return new Promise(resolve => setTimeout(resolve, milliseconds))
     //   }
@@ -224,19 +227,29 @@ const ResortsListElement = (props) => {
                                         </Card.Text>
                                     </div>
                                     <div className="col-md-6">
+                                    <br></br>
                                         <Card.Text>
                                             <i className="circle icon" id="blue-circle"></i>
-                                Trasy niebieskie: {resort.blueSlopes}
+                                Trasy niebieskie: <b>{resort.blueSlopes}</b>
                                             <br></br>
                                             <i className="circle icon" id="red-circle"></i>
-                                Trasy czerwone: {resort.redSlopes}
+                                Trasy czerwone: <b>{resort.redSlopes}</b>
                                             <br></br>
                                             <i className="circle icon"></i>
-                                Trasy czarne: {resort.blackSlopes}
-                                Dystans: {resort.distance}
+                                Trasy czarne: <b>{resort.blackSlopes}</b>
                                         </Card.Text>
                                     </div>
-
+                                {props.userLat!==0 && props.userLon!==0 ? (
+                                <div id="distance-div">
+                                <i className="map marker alternate icon"></i>
+                                Dystans od Twojej lokalizacji: <b>{truncate(resort.distance)} km</b>
+                                </div>
+                                ) : (
+                                < div id="distance-div">
+                                <i className="map marker alternate icon"></i>
+                                Zezwól na dostęp do Twojej lokalizacji i odśwież stronę aby zobaczyć dystans do ośrodka
+                                </div>
+                                )} 
                                 </div>
                                 <div id="button-div">
                                     <Link to={"/osrodek/" + resort.resortId}><Button className="card-button">Więcej</Button></Link>

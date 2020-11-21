@@ -12,6 +12,10 @@ const PreferredResortsListElement = (props) => {
         if(countryName==="Slovakia") return "Slovakia"
     }
 
+    function truncate(value) {
+        return Math.floor(value * 10) / 10;
+    }
+
     return (<div>
         <CardGroup id="card-group">
         {props.resortsWithPoints.data.map(
@@ -38,17 +42,29 @@ const PreferredResortsListElement = (props) => {
                             </Card.Text>
                             </div>
                             <div className="col-md-6">
+                            <br></br>
                             <Card.Text>
                                 <i className="circle icon" id="blue-circle"></i>
-                                Trasy niebieskie: {resort.first.blueSlopes} 
+                                Trasy niebieskie: <b>{resort.first.blueSlopes}</b>
                                 <br></br>
                                 <i className="circle icon" id="red-circle"></i>
-                                Trasy czerwone: {resort.first.redSlopes}
+                                Trasy czerwone: <b>{resort.first.redSlopes}</b>
                                 <br></br>
                                 <i className="circle icon"></i>
-                                Trasy czarne: {resort.first.blackSlopes} 
+                                Trasy czarne: <b>{resort.first.blackSlopes} </b>
                             </Card.Text>
                             </div>
+                            {props.userLat!==0 && props.userLon!==0 ? (
+                                <div id="distance-div">
+                                <i className="map marker alternate icon"></i>
+                                Dystans od Twojej lokalizacji: <b>{truncate(resort.first.distance)} km</b>
+                                </div>
+                                ) : (
+                                < div id="distance-div">
+                                <i className="map marker alternate icon"></i>
+                                Zezwól na dostęp do Twojej lokalizacji i odśwież stronę aby zobaczyć dystans do ośrodka
+                                </div>
+                                )} 
                             </div>
                             <div id="rating">
                             <ImStatsBars size="23" id="stats-icon" />
