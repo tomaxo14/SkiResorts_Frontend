@@ -4,7 +4,7 @@ import UserService from '../services/user.service'
 import ResortService from '../services/resort-service'
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-import { Container, Button } from 'react-bootstrap';
+import { Container, Button, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import NavBar from './NavBar';
@@ -101,6 +101,8 @@ class Preferences extends React.Component {
                     ) : (
                             <h3></h3>
                         )}
+
+                    
                     <Typography id="discrete-slider" gutterBottom>
                         <b>Liczba tras niebieskich</b>
                     </Typography>
@@ -173,6 +175,7 @@ class Preferences extends React.Component {
                     />
                     <br></br>
                     <br></br>
+                    
                     {this.state.hasPreferences ? (
                         <Button onClick={this.onSaveClick}>Zapisz nowe preferencje</Button>
                     ) : (
@@ -194,7 +197,7 @@ class Preferences extends React.Component {
                             Pokaż preferowane ośrodki
                 </Button>
                     </Link>
-
+                    
                 </Container>
                 <Footer></Footer>
             </div>

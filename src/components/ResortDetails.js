@@ -229,39 +229,40 @@ class ResortDetails extends React.Component {
                                     )}
                                 <p>
                                     <i className="circle icon" id="blue-circle"></i>
-                                Trasy niebieskie: {this.state.resort_details.blueSlopes}
+                                Trasy niebieskie: <b>{this.state.resort_details.blueSlopes}</b>
                                 </p>
                                 <p>
                                     <i className="circle icon" id="red-circle"></i>
-                                Trasy czerwone: {this.state.resort_details.redSlopes}
+                                Trasy czerwone: <b>{this.state.resort_details.redSlopes}</b>
                                 </p>
                                 <p>
                                     <i className="circle icon"></i>
-                                Trasy czarne: {this.state.resort_details.blackSlopes}
+                                Trasy czarne: <b>{this.state.resort_details.blackSlopes}</b>
                                 </p>
                                 <p>
                                     <img src={Gondola} width="12" height="15" className="lifts-img"></img>
-                                Gondole: {this.state.resort_details.gondolas}
+                                Gondole: <b>{this.state.resort_details.gondolas}</b>
                                 </p>
                                 <p>
                                     <img src={Kanapa} width="15" height="15" className="lifts-img"></img>
-                                Kanapy: {this.state.resort_details.chairlifts}
+                                Kanapy: <b>{this.state.resort_details.chairlifts}</b>
                                 </p>
                                 <p>
                                     <img src={Orczyk} width="15" height="15" className="lifts-img"></img>
-                                Orczyki: {this.state.resort_details.tbars}
+                                Orczyki: <b>{this.state.resort_details.tbars}</b>
                                 </p>
                                 <p>
                                     <img src={Talerzyk} width="15" height="15" className="lifts-img"></img>
-                                Wyciągi talerzowe: {this.state.resort_details.platters}
+                                Wyciągi talerzowe: <b>{this.state.resort_details.platters}</b>
                                 </p>
                                 <p>
                                     <i className="road icon"></i>
-                                Taśmociągi: {this.state.resort_details.carpets}
+                                Taśmociągi: <b>{this.state.resort_details.carpets}</b>
                                 </p>
                                 <p>
                                     <i className="trophy icon"></i>
-                                Snowpark: {this.state.resort_details.ifSnowPark}
+                                {/* Snowpark: {this.state.resort_details.ifSnowPark} */}
+                                    Snowpark: <b>nie posiada</b>
                                 </p>
                             </Col>
                             <Col xs={10} md={7}>
@@ -272,7 +273,7 @@ class ResortDetails extends React.Component {
                         </Row>
                         <Row id="third-row">
                             <Col xs={6}>
-                                <h3>Aktualna pogoda</h3>
+                                <h3 id="actual-weather-title">Aktualna pogoda</h3>
                                 <p>
                                     <WiThermometer size="20" className="weather-icon"></WiThermometer>
                             Temperatura: <b>{this.state.mainWeather.temp} &#8451; </b>

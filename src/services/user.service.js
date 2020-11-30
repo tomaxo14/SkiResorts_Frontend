@@ -54,6 +54,10 @@ class UserService {
     return axios.get(API_URL_BASIC + `yourRatings`, { headers: authHeader()});
   }
 
+  getFavouritesWithGeo(latitude, longitude) {
+    return axios.get(API_URL_BASIC + 'favouritesWithGeo?latitude=' + latitude + '&longitude=' + longitude, { headers: authHeader()});
+}
+
   yourFavourites() {
     return axios.get(API_URL_BASIC + `yourFavourites`, { headers: authHeader()});
   }

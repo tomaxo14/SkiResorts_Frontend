@@ -46,7 +46,7 @@ class ResortsList extends React.Component {
                     <NavBar></NavBar>
                     <div className="ui segment">
                         <div className="ui active inverted dimmer">
-                            <div className="ui text loader" id="loader">Ładowanie</div>
+                            <div className="ui text loader" id="loader">Ładowanie ośrodków</div>
                         </div>
                     </div>
                 </div>

@@ -9,7 +9,8 @@ import '../styles/App.css';
 import ResortsList from "./ResortsList";
 import ResortDetails from "./ResortDetails";
 import Preferences from "./Preferences";
-import PreferredResortsList from "./PreferredResortsList"
+import PreferredResortsList from "./PreferredResortsList";
+import Favourites from "./Favourites";
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
           <Route exact path="/" component={Home}/>
           <Route path="/preferencje" component={Preferences}/>
           <Route path="/preferowaneOsrodki" component={PreferredResortsList}/>
+          <Route path="/ulubione" component={Favourites}/>
           </Switch>
       </div>
       </Router>

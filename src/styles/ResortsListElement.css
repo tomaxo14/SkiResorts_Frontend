@@ -30,7 +30,8 @@
 }
 
 #card-group {
-    margin-left: 40px;
+    display: flex;
+    justify-content: center;
 }
 
 .form-control {
