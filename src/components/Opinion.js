@@ -2,6 +2,12 @@ import React from 'react';
 
 const Opinion = (props) => {
 
+    function formatDate(date) {
+        return (
+            new Intl.DateTimeFormat("en-GB").format(Date.parse(date))
+        )
+    }
+
     const opinions = props.opinions;
     return (
         <div>
@@ -18,7 +24,7 @@ const Opinion = (props) => {
                                         {rating.user}
                                     </div>
                                     <div className="metadata">
-                                        <span className="date"> {rating.date} </span>
+                                        <span className="date"> {formatDate(rating.date)} </span>
                                     </div>
                                     <div className="text">
                                         {rating.message}

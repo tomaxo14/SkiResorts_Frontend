@@ -34,6 +34,7 @@ class NavBar extends React.Component {
                         {/* <Nav.Link href="#link">Ranking</Nav.Link> */}
                         <Nav.Link href="/preferencje">Preferencje</Nav.Link>
                         <Nav.Link href="/ulubione">Twoje ulubione</Nav.Link>
+                        <Nav.Link href="oceny">Twoje oceny</Nav.Link>
                         <NavDropdown title="Zarządzanie kontem" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Zmiana hasła</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Usunięcie konta</NavDropdown.Item>
