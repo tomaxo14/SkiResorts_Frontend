@@ -6,15 +6,39 @@ import '../styles/NavBar.css';
 
 class NavBar extends React.Component {
 
-    constructor(){
+    constructor() {
         super();
         this.state = {
-            currentUser: undefined
+            currentUser: undefined,
+            userRoles: [],
+            admin: false
         }
+        this.ifAdmin = this.ifAdmin.bind(this);
     }
 
     componentDidMount() {
-        this.setState({currentUser: AuthService.getCurrentUser()})
+        this.setState({ currentUser: AuthService.getCurrentUser() }, function () {
+            console.log(this.state.currentUser);
+            if(this.state.currentUser !== undefined && this.state.currentUser !== null) {
+                this.setState({ userRoles: this.state.currentUser.roles },
+                function () {
+                    if (this.ifAdmin()===true) {
+                        this.setState({ admin: true });
+                    }
+                })
+            }
+        })
+
+    }
+
+    ifAdmin() {
+        var i;
+        for (i = 0; i < this.state.userRoles.length; i++) {
+            if (this.state.userRoles[i] === "ROLE_ADMIN") {
+                return true;
+            }
+        }
+        return false;
     }
 
     logout() {
@@ -31,22 +55,41 @@ class NavBar extends React.Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link href="/osrodki">Ośrodki</Nav.Link>
-                        {/* <Nav.Link href="#link">Ranking</Nav.Link> */}
                         <Nav.Link href="/preferencje">Preferencje</Nav.Link>
-                        <Nav.Link href="/ulubione">Twoje ulubione</Nav.Link>
-                        <Nav.Link href="oceny">Twoje oceny</Nav.Link>
-                        <NavDropdown title="Zarządzanie kontem" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Zmiana hasła</NavDropdown.Item>
-                            <NavDropdown.Item href="/lokalizacja">Zapisz lokalizację</NavDropdown.Item>
-                        </NavDropdown>
+
                         {this.state.currentUser ? (
+                        <Nav>
+                        <Nav.Link href="/ulubione">Twoje ulubione</Nav.Link>
+                        <Nav.Link href="/oceny">Twoje oceny</Nav.Link>
+                        </Nav>
+                        ):(
+                            <span></span>
+                        )
+                        }
+                        {this.state.admin ? (
+                            <Nav.Link href="/admin">Dodaj ośrodek</Nav.Link>
+                        ) : (
+                                <span></span>
+                            )}
+                    </Nav>
+                    <Nav>
+                    {this.state.currentUser ? (
                             <Nav>
-                            <Nav.Link href="#profil">{this.state.currentUser.login}</Nav.Link>
-                            <Nav.Link href="/logowanie" onClick={this.logout}>Wyloguj</Nav.Link>
+                                <Navbar.Text href="#profil">{this.state.currentUser.login}</Navbar.Text>
+                                <NavDropdown title="Zarządzanie kontem" id="basic-nav-dropdown">
+                                <NavDropdown.Item href="/lokalizacja">Zapisz lokalizację</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.1">Zmiana hasła</NavDropdown.Item>
+                        </NavDropdown>
+                                <Nav.Link href="/logowanie" onClick={this.logout}>Wyloguj</Nav.Link>
                             </Nav>
                         ) : (
-                            <Nav.Link href="/logowanie">Logowanie</Nav.Link>
-                        )}
+                            <Nav>
+                                <Nav.Link href="/logowanie">Logowanie</Nav.Link>
+                                <Nav.Link href="/rejestracja">Rejestracja</Nav.Link>
+                            </Nav>
+                            )}
+                        
+
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

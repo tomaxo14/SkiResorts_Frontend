@@ -253,6 +253,14 @@ const ResortsListElement = (props) => {
                                 </div>
                                 <div id="button-div">
                                     <Link to={"/osrodek/" + resort.resortId}><Button className="card-button">Więcej</Button></Link>
+                                    {props.admin ? (
+                                        <Link to={{
+                                            pathname: '/admin',
+                                            resortId:  resort.resortId
+                                        }}><Button className="card-button">Edytuj</Button></Link>
+                                    ):(
+                                        <span></span>
+                                    )}
                                 </div>
                             </Card.Body>
                         </Card>

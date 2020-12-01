@@ -13,6 +13,7 @@ import PreferredResortsList from "./PreferredResortsList";
 import Favourites from "./Favourites";
 import Ratings from "./Ratings";
 import UserLocation from "./UserLocation";
+import AdminForm from "./AdminForm";
 
 class App extends Component {
   render() {
@@ -31,6 +32,7 @@ class App extends Component {
           <Route path="/ulubione" component={Favourites}/>
           <Route path="/oceny" component={Ratings}/>
           <Route path="/lokalizacja" component={UserLocation}/>
+          <Route path="/admin" component={AdminForm}/>
           </Switch>
       </div>
       </Router>

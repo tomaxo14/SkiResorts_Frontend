@@ -75,14 +75,10 @@ class Preferences extends React.Component {
             this.setState({savedLocation: savedLocation.data})
             console.log(savedLocation);            
         }
-        if(savedLocation!==undefined && this.state.savedLocation!==""){
+        if(savedLocation!==undefined && this.state.savedLocation!=="" && this.state.savedLocation!==[] ){
             this.setState({userLat: this.state.savedLocation.latitude, userLon: this.state.savedLocation.longitude});
-        } else {
-            if(this.state.savedLocation!==[] && this.state.savedLocation!==""){
-                this.setState({userLat: this.state.savedLocation.latitude, userLon: this.state.savedLocation.longitude});
-            } else {
-                navigator.geolocation.getCurrentPosition(this.handlePosition);
-            }
+        } else{
+            navigator.geolocation.getCurrentPosition(this.handlePosition);
         }
         console.log(this.state.userLat, this.state.userLon);
     }
@@ -200,7 +196,7 @@ class Preferences extends React.Component {
                     ) : (
                         <div>
                             {this.state.currentUser===undefined ? (
-                                <Button href="/logowanie">Zaloguj się aby zapisać swoje preferencje</Button>
+                                <Button className="preferences-button" href="/logowanie">Zaloguj się, aby zapisać preferencje</Button>
                             ):(
                                 <Button className="preferences-button" onClick={this.onSaveClick}>Zapisz preferencje</Button>
                             )}                            

@@ -17,29 +17,54 @@ class ResortsList extends React.Component {
             userLat: 0,
             userLon: 0,
             locationReady: false,
-            userSavedLocation: []
+            userSavedLocation: [],
+            userRoles: [],
+            admin: false
         }
         this.helperFunction = this.helperFunction.bind(this);
     }
 
     async componentDidMount() {
         const user = AuthService.getCurrentUser();
-        var savedLocation
+        
+        if(user !== undefined && user !== null) {
+            this.setState({ userRoles: user.roles },
+            function () {
+                if (this.ifAdmin()===true) {
+                    this.setState({ admin: true });
+                }
+            })
+        }
+
+        var savedLocation = undefined;
         if (user != undefined) {
             savedLocation = await UserService.yourLocation();
+            this.setState({userSavedLocation: savedLocation.data})
             console.log(savedLocation);            
         }
-        if(savedLocation.data!==""){
-            this.setState({userLat: savedLocation.data.latitude, userLon: savedLocation.data.longitude})
+        if(savedLocation!==undefined && this.state.userSavedLocation!=="" && this.state.userSavedLocation!==[]){
+            this.setState({userLat: this.state.userSavedLocation.latitude, userLon: this.state.userSavedLocation.longitude})
         } else {
-            navigator.geolocation.getCurrentPosition(this.helperFunction);
+                navigator.geolocation.getCurrentPosition(this.helperFunction);    
         }
         this.sleep(500).then(async() => {
             const resorts = await ResortService.getAllResortsWithGeo(this.state.userLat, this.state.userLon);
             this.setState({ resorts_data: resorts.data, isLoaded: true });
             console.log(resorts);
         })
+    
+        
         // const resorts = await ResortService.getAllResortsWithGeo(this.state.userLat, this.state.userLon);
+    }
+
+    ifAdmin() {
+        var i;
+        for (i = 0; i < this.state.userRoles.length; i++) {
+            if (this.state.userRoles[i] === "ROLE_ADMIN") {
+                return true;
+            }
+        }
+        return false;
     }
 
     async helperFunction(position){
@@ -68,7 +93,7 @@ class ResortsList extends React.Component {
             return (
                 <div>
                     <NavBar></NavBar>
-                    <ResortsListElement resorts={this.state.resorts_data} userLat={this.state.userLat} userLon={this.state.userLon} />
+                    <ResortsListElement resorts={this.state.resorts_data} userLat={this.state.userLat} userLon={this.state.userLon} admin={this.state.admin} />
                     <Footer></Footer>
                 </div>
             )
