@@ -12,6 +12,7 @@ import Preferences from "./Preferences";
 import PreferredResortsList from "./PreferredResortsList";
 import Favourites from "./Favourites";
 import Ratings from "./Ratings";
+import UserLocation from "./UserLocation";
 
 class App extends Component {
   render() {
@@ -29,6 +30,7 @@ class App extends Component {
           <Route path="/preferowaneOsrodki" component={PreferredResortsList}/>
           <Route path="/ulubione" component={Favourites}/>
           <Route path="/oceny" component={Ratings}/>
+          <Route path="/lokalizacja" component={UserLocation}/>
           </Switch>
       </div>
       </Router>

@@ -50,6 +50,15 @@ class UserService {
       fetch(url,options).then(res => console.log(res));
   }
 
+  async saveLocation(latitude, longitude) {
+    let options = {
+      method: 'POST',
+      headers : authHeader()
+      };
+      let url = API_URL_BASIC + `saveLocation?latitude=` + latitude + `&longitude=` + longitude;
+      fetch(url,options).then(res => console.log(res));
+  }
+
   yourRatings() {
     return axios.get(API_URL_BASIC + `yourRatings`, { headers: authHeader()});
   }
@@ -64,6 +73,10 @@ class UserService {
 
   yourPreferences() {
     return axios.get(API_URL_BASIC + `yourPreferences`, { headers: authHeader()});
+  }
+
+  yourLocation() {
+    return axios.get(API_URL_BASIC + `yourLocation`, { headers: authHeader()});
   }
 
   async addPreferences(blue, red, black, snowPark, location) {

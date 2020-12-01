@@ -6,3 +6,19 @@
 #discrete-slider {
     margin-top: 50px;
 }
+
+.preferences-button {
+    background-color:#438de2;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 2em;
+}
+
+#buttons-title {
+    text-align: center;
+    margin-top: 30%;
+}
+
+#buttons-col {
+    text-align: center;
+}

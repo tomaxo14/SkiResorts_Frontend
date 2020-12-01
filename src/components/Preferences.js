@@ -4,7 +4,7 @@ import UserService from '../services/user.service'
 import ResortService from '../services/resort-service'
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-import { Container, Button, Col } from 'react-bootstrap';
+import { Container, Button, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import NavBar from './NavBar';
@@ -46,7 +46,8 @@ class Preferences extends React.Component {
             location: 3,
             hasPreferences: false,
             userLat: 0,
-            userLon: 0
+            userLon: 0,
+            savedLocation: []
         }
         this.onSaveClick = this.onSaveClick.bind(this);
         this.handlePosition = this.handlePosition.bind(this);
@@ -68,8 +69,21 @@ class Preferences extends React.Component {
         //     this.setState({userLat: position.coords.latitude, userLon: position.coords.longitude});
         //     // console.log(position.coords.latitude, position.coords.longitude);
         // });
-
-        navigator.geolocation.getCurrentPosition(this.handlePosition);
+        var savedLocation = undefined;
+        if (user != undefined) {
+            savedLocation = await UserService.yourLocation();
+            this.setState({savedLocation: savedLocation.data})
+            console.log(savedLocation);            
+        }
+        if(savedLocation!==undefined && this.state.savedLocation!==""){
+            this.setState({userLat: this.state.savedLocation.latitude, userLon: this.state.savedLocation.longitude});
+        } else {
+            if(this.state.savedLocation!==[] && this.state.savedLocation!==""){
+                this.setState({userLat: this.state.savedLocation.latitude, userLon: this.state.savedLocation.longitude});
+            } else {
+                navigator.geolocation.getCurrentPosition(this.handlePosition);
+            }
+        }
         console.log(this.state.userLat, this.state.userLon);
     }
 
@@ -92,6 +106,8 @@ class Preferences extends React.Component {
             <div>
                 <NavBar></NavBar>
                 <Container className="container">
+                    <Row>
+                    <Col>
                     <h2>Zaznacz jak ważna jest dla Ciebie każda z poniższych cech ośrodka. Następnie my zarekomendujemy ośrodki spełniające Twoje wymagania.</h2>
                     {this.state.hasPreferences ? (
                         <div>
@@ -175,11 +191,20 @@ class Preferences extends React.Component {
                     />
                     <br></br>
                     <br></br>
-                    
+                    </Col>
+                    <Col id="buttons-col">
+                    <h4 id="buttons-title">Jeśli skończyłeś wybierać preferencję, zapisz je lub kliknij od razu przycisk <i>"Pokaż preferowane ośrodki"</i> jeśli 
+                    nie chcesz zapisywać swoich preferencji na przyszłość</h4>
                     {this.state.hasPreferences ? (
-                        <Button onClick={this.onSaveClick}>Zapisz nowe preferencje</Button>
+                        <Button className="preferences-button" onClick={this.onSaveClick}>Zapisz nowe preferencje</Button>
                     ) : (
-                            <Button onClick={this.onSaveClick}>Zapisz preferencje</Button>
+                        <div>
+                            {this.state.currentUser===undefined ? (
+                                <Button href="/logowanie">Zaloguj się aby zapisać swoje preferencje</Button>
+                            ):(
+                                <Button className="preferences-button" onClick={this.onSaveClick}>Zapisz preferencje</Button>
+                            )}                            
+                        </div>
                         )}
 
                     <Link
@@ -193,11 +218,12 @@ class Preferences extends React.Component {
                             userLat: this.state.userLat,
                             userLon: this.state.userLon
                         }}>
-                        <Button>
+                        <Button className="preferences-button">
                             Pokaż preferowane ośrodki
                 </Button>
                     </Link>
-                    
+                    </Col>
+                    </Row>
                 </Container>
                 <Footer></Footer>
             </div>

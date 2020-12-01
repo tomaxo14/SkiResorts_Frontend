@@ -1,0 +1,27 @@
+#location-container {
+    text-align: center;
+
+}
+#map-paragraph {
+    margin-top: 5em;
+    display: flex;
+    justify-content: center;
+}
+
+#save-button {
+    background-color:#438de2;
+    margin-top: 2em;
+}
+
+#save-button:hover {
+    background-color:#2b39ff;
+}
+
+@media only screen and (min-height: 900px) {
+    #location-footer-div {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    }
+

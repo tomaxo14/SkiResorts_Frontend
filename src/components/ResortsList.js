@@ -1,5 +1,7 @@
 import React from 'react';
 import ResortService from '../services/resort-service.js';
+import AuthService from '../services/auth.service';
+import UserService from '../services/user.service';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import ResortsListElement from './ResortsListElement.js';
@@ -14,13 +16,24 @@ class ResortsList extends React.Component {
             isLoaded: false,
             userLat: 0,
             userLon: 0,
-            locationReady: false
+            locationReady: false,
+            userSavedLocation: []
         }
         this.helperFunction = this.helperFunction.bind(this);
     }
 
     async componentDidMount() {
-        navigator.geolocation.getCurrentPosition(this.helperFunction);
+        const user = AuthService.getCurrentUser();
+        var savedLocation
+        if (user != undefined) {
+            savedLocation = await UserService.yourLocation();
+            console.log(savedLocation);            
+        }
+        if(savedLocation.data!==""){
+            this.setState({userLat: savedLocation.data.latitude, userLon: savedLocation.data.longitude})
+        } else {
+            navigator.geolocation.getCurrentPosition(this.helperFunction);
+        }
         this.sleep(500).then(async() => {
             const resorts = await ResortService.getAllResortsWithGeo(this.state.userLat, this.state.userLon);
             this.setState({ resorts_data: resorts.data, isLoaded: true });

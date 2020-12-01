@@ -76,13 +76,32 @@ const RateResort = (props) =>  {
                 <div>
                 {message == '' || message == undefined ? (
                 <div>
-                    <Button onClick={onSubmit} id="rate-button">Zapisz ocenę</Button>
-                    <MyModal title="Powiadomienie" body="Dodano ocenę" show={show} onHide={modalClose}  />
+                    {props.alreadyRated ? (
+                        <div>
+                            <Button onClick={onSubmit} id="rate-button">Edytuj ocenę</Button>
+                            <MyModal title="Powiadomienie" body="Edytowano ocenę" show={show} onHide={modalClose}  />
+                        </div>
+                    ):(
+                        <div>
+                            <Button onClick={onSubmit} id="rate-button">Zapisz ocenę</Button>
+                            <MyModal title="Powiadomienie" body="Dodano ocenę" show={show} onHide={modalClose}  />
+                        </div>
+                    )}
+                    
                 </div>
                 ) : (
                     <div>
-                        <Button onClick={onSubmit}>Zapisz ocenę i opinię</Button>
-                        <MyModal title="Powiadomienie" body="Dodano ocenę i opinię" show={show} onHide={modalClose}  />
+                        {props.alreadyRated ? (
+                        <div>
+                            <Button onClick={onSubmit}>Edytuj ocenę i opinię</Button>
+                            <MyModal title="Powiadomienie" body="Edytowano ocenę i opinię" show={show} onHide={modalClose}  />
+                        </div>
+                        ):(
+                        <div>
+                            <Button onClick={onSubmit}>Zapisz ocenę i opinię</Button>
+                            <MyModal title="Powiadomienie" body="Dodano ocenę i opinię" show={show} onHide={modalClose}  />
+                        </div>
+                        )}
                     </div>
             )}
             </div>

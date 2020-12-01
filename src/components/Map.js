@@ -6,15 +6,31 @@ class Map extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            // minZoom: this.props.minZoom,
+            // maxZoom: this.props.maxZoom,
+            // hasLocation: true,
+            isLoaded: false,
             viewport: {
                 width: 500,
                 height: 300,
                 latitude: parseFloat(this.props.lat),
                 longitude: parseFloat(this.props.lon),
-                zoom: 8            
+                zoom: 8
             }
         };
     }
+
+    // componentDidMount() {
+    //     if(this.state.viewport.latitude === 0.0 && this.state.viewport.longitude === 0.0) {
+    //         var viewport = {...this.state.viewport};
+    //         viewport.latitude = 52.0;
+    //         viewportHelper.longitude = 19.0;
+    //         this.setState({viewport});
+    //         this.setState({hasLocation:false, isLoaded:true});
+    //     } else {
+    //         this.setState({isLoaded:true})
+    //     }
+    // }
 
 
     render() {
@@ -27,14 +43,15 @@ class Map extends React.Component {
                 {...this.state.viewport}
                 onViewportChange={(viewport) => this.setState({ viewport })}
             >
-                <Marker
-                latitude={parseFloat(this.props.lat)}
-                longitude={parseFloat(this.props.lon)}>
-                    <i className="red big map marker alternate icon"></i>
-                </Marker>
+                    <Marker
+                    latitude={parseFloat(this.props.lat)}
+                    longitude={parseFloat(this.props.lon)}>
+                        <i className="red big map marker alternate icon"></i>
+                    </Marker>
             </ReactMapGL>
 
         );
+                
     }
 }
 export default Map;

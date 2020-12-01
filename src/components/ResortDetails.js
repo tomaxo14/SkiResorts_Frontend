@@ -47,7 +47,8 @@ class ResortDetails extends React.Component {
             weatherDescription: [],
             futureWeatherDaily: [],
             weatherReady: false,
-            isLoaded: false
+            isLoaded: false,
+            alreadyRated: true
         }
 
         this.onClickFavButton = this.onClickFavButton.bind(this);
@@ -83,7 +84,7 @@ class ResortDetails extends React.Component {
         console.log(user);
         console.log(this.state.opinions);
         console.log(this.state.ratings);
-        if (this.state.resort_details.website != null) {
+        if (this.state.resort_details.website !== null && this.state.resort_details.website !== "") {
             this.setState({ hasWebsite: true });
         }
         const weather = await ResortService.getWeather(this.state.location.latitude, this.state.location.longitude);
@@ -96,6 +97,10 @@ class ResortDetails extends React.Component {
         });
         console.log(this.state.futureWeatherDaily);
         console.log(this.state.location.latitude);
+        if(this.ratedByUser()===" Nie oceniono") {
+            this.setState({alreadyRated: false})
+            console.log(this.state.alreadyRated);
+        }
         this.setState({ isLoaded: true })
     }
 
@@ -113,13 +118,14 @@ class ResortDetails extends React.Component {
     ratedByUser() {
         var i;
         for (i = 0; i < this.state.ratings.length; i++) {
-            if (this.state.ratings[i].resort === this.state.resort_details.resortId) {
+            if (this.state.ratings[i].resort === this.state.resort_details.resortId) {              
                 return " " + this.state.ratings[i].value;
             }
         }
         return " Nie oceniono"
 
     }
+
 
 
     polishCountryName(countryName) {
@@ -214,7 +220,7 @@ class ResortDetails extends React.Component {
                                 <h3>{this.polishCountryName(this.state.location.country)}</h3>
                             </Col>
                             <Col className="rate-resort" xs={7} md={4}>
-                                <RateResort resortId={this.state.resort_details.resortId} afterRate={() => this.updateAfterAction(this.state.resort_details.resortId)} user={this.state.currentUser}></RateResort>
+                                <RateResort resortId={this.state.resort_details.resortId} afterRate={() => this.updateAfterAction(this.state.resort_details.resortId)} user={this.state.currentUser} alreadyRated={this.state.alreadyRated}></RateResort>
                             </Col>
                         </Row>
                         <Row className="row">
@@ -348,7 +354,7 @@ class ResortDetails extends React.Component {
                             <Col xs={6}>
                                 <div className="div-map">
                                 <h3>Ośrodek na mapie</h3>
-                                    <Map lat={this.state.location.latitude} lon={this.state.location.longitude} />
+                                    <Map lat={this.state.location.latitude} lon={this.state.location.longitude} zoom={8} maxZoom={12} minZoom={7} />
                                 </div>
                             </Col>
                         </Row>
