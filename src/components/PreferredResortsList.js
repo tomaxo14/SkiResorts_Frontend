@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from './Footer';
 import NavBar from './NavBar';
+import BackButton from './BackButton';
 import ResortService from '../services/resort-service';
 import PreferredResortsListElement from './PreferredResortsListElement';
 

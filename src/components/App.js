@@ -14,6 +14,7 @@ import Favourites from "./Favourites";
 import Ratings from "./Ratings";
 import UserLocation from "./UserLocation";
 import AdminForm from "./AdminForm";
+import ChangePassword from "./ChangePassword";
 
 class App extends Component {
   render() {
@@ -33,6 +34,7 @@ class App extends Component {
           <Route path="/oceny" component={Ratings}/>
           <Route path="/lokalizacja" component={UserLocation}/>
           <Route path="/admin" component={AdminForm}/>
+          <Route path="/zmianaHasla" component={ChangePassword} />
           </Switch>
       </div>
       </Router>

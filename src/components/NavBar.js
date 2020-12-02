@@ -75,10 +75,10 @@ class NavBar extends React.Component {
                     <Nav>
                     {this.state.currentUser ? (
                             <Nav>
-                                <Navbar.Text href="#profil">{this.state.currentUser.login}</Navbar.Text>
+                                <Navbar.Text href="#profil" id="login-text">Zalogowany: {this.state.currentUser.login}</Navbar.Text>
                                 <NavDropdown title="Zarządzanie kontem" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="/lokalizacja">Zapisz lokalizację</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.1">Zmiana hasła</NavDropdown.Item>
+                                <NavDropdown.Item href="/zmianaHasla">Zmiana hasła</NavDropdown.Item>
                         </NavDropdown>
                                 <Nav.Link href="/logowanie" onClick={this.logout}>Wyloguj</Nav.Link>
                             </Nav>

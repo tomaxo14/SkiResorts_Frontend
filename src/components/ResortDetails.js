@@ -19,6 +19,7 @@ import Gondola from "../img/ski_lift_icons/gondola.png";
 import Kanapa from "../img/ski_lift_icons/kanapa.png";
 import Krzeslo from "../img/ski_lift_icons/krzeslo.png";
 import Orczyk from "../img/ski_lift_icons/orczyk.png";
+import BackButton from "./BackButton";
 {/* <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPZsBnGGDcs1McAH94Gp3luxepH9079Vg"
   type="text/javascript"></script> */}
 
