@@ -178,8 +178,12 @@ class AdminForm extends React.Component {
             <div>
                 <NavBar></NavBar>
                 <Container>
+                {this.state.resortId!==undefined ? (
+                    <h3>Edytuj ośodek</h3>
+                ):(
                     <h3>Dodaj nowy ośodek</h3>
-
+                )
+                }
                 <Form onSubmit={this.onSubmit}>
                     <Row>
                         <Col>

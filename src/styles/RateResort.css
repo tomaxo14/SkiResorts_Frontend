@@ -6,3 +6,7 @@
 #rate-button:hover {
     background-color:#2b39ff;
 }
+
+#rate-info {
+    font-size: large;
+}

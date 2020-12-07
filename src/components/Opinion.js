@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/Opinion.css';
 
 const Opinion = (props) => {
 
@@ -26,7 +27,7 @@ const Opinion = (props) => {
                                     <div className="metadata">
                                         <span className="date"> {formatDate(rating.date)} </span>
                                     </div>
-                                    <div className="text">
+                                    <div className="text" id="last-div">
                                         {rating.message}
                                     </div>
                                 </div>

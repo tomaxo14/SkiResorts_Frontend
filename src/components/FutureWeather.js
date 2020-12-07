@@ -56,30 +56,30 @@ const FutureWeather = (props) => {
                 id="select-date"
                 />
             <p>
-                <WiThermometer size="20" className="weather-icon"></WiThermometer>
+                <WiThermometer size="24" className="weather-icon"></WiThermometer>
                 Temperatura: <b>{choosenDayData.temp.day} &#8451; </b>
             </p>
             <p>
-                <WiThermometerExterior size="20" className="weather-icon"></WiThermometerExterior>
+                <WiThermometerExterior size="24" className="weather-icon"></WiThermometerExterior>
                 Temperatura odczuwalna: <b> {choosenDayData.feels_like.day} &#8451; </b>
             </p>
             <p>
-                <WiHumidity size="20" className="weather-icon"></WiHumidity>
+                <WiHumidity size="24" className="weather-icon"></WiHumidity>
                 Wilgotność: <b> {choosenDayData.humidity}
                 <span>%</span></b>
             </p>
             <p>
-                <WiStrongWind size="20" className="weather-icon"></WiStrongWind>
+                <WiStrongWind size="24" className="weather-icon"></WiStrongWind>
                 Prędkość wiatru: <b> {choosenDayData.wind_speed}
                 <span>&nbsp;m/s</span></b>
             </p>
             <p>
-                <WiCloudy size="20" className="weather-icon"></WiCloudy>
+                <WiCloudy size="24" className="weather-icon"></WiCloudy>
                 Chmury: <b> {choosenDayData.clouds}
                 <span>%</span></b>
             </p>
             <div>
-                <WiDust size="20" className="weather-icon"></WiDust>
+                <WiDust size="24" className="weather-icon"></WiDust>
                 Opis:
                 <b>
                     {choosenDayDescription.map(

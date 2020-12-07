@@ -13,3 +13,20 @@
     left: 50%;
     margin-left: -5.25em;
 }
+
+#ratings-info {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+#logged-footer {
+    margin-top: 11em;
+}
+
+@media only screen and (min-height: 680px) {
+    #not-logged-footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+}

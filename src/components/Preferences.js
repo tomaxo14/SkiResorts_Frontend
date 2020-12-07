@@ -189,7 +189,7 @@ class Preferences extends React.Component {
                     <br></br>
                     </Col>
                     <Col id="buttons-col">
-                    <h4 id="buttons-title">Jeśli skończyłeś wybierać preferencję, zapisz je lub kliknij od razu przycisk <i>"Pokaż preferowane ośrodki"</i> jeśli 
+                    <h4 id="buttons-title">Jeśli skończyłeś wybierać preferencję, zapisz je lub kliknij od razu przycisk <i>"Pokaż rekomendowane ośrodki",</i> jeśli 
                     nie chcesz zapisywać swoich preferencji na przyszłość</h4>
                     {this.state.hasPreferences ? (
                         <Button className="preferences-button" onClick={this.onSaveClick}>Zapisz nowe preferencje</Button>
@@ -215,7 +215,7 @@ class Preferences extends React.Component {
                             userLon: this.state.userLon
                         }}>
                         <Button className="preferences-button">
-                            Pokaż preferowane ośrodki
+                            Pokaż rekomendowane ośrodki
                 </Button>
                     </Link>
                     </Col>

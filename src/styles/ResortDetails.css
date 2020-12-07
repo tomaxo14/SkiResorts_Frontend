@@ -19,7 +19,7 @@
 }
 
 .button {
-    background-color:#438de2;
+    background-color:#438de2 !important;
 }
 
 .weather-icon {
@@ -37,4 +37,17 @@
 
 #actual-weather-title {
     padding-bottom: 2em;
+}
+
+#ratings-col, #info-col, #weather-col {
+    font-size: large;
+}
+
+#website {
+    color: black;
+}
+@media only screen and (min-width: 1600px) {
+    #img-col {
+        margin-left: 6.5em;
+    }
 }

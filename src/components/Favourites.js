@@ -71,6 +71,10 @@ class Favourites extends React.Component {
                         </div>
                     ):(
                         <div>
+                        <Container id="favourites-info">
+                            <h2>Twoje ulubione</h2>
+                            <h5>Poniżej możesz zobaczyć wszystkie ośrodki, które dodałeś do ulubionych:</h5>
+                        </Container>
                         <ResortsListElement resorts={this.state.favourites_data} />                
                         <div><Footer></Footer></div>
                         </div>

@@ -61,6 +61,10 @@ class Ratings extends React.Component {
                         </div>
                     ) : (
                             <div>
+                                <Container id="ratings-info">
+                                    <h2>Twoje oceny</h2>
+                                    <h5>Poniżej masz możliwość wglądu do wszystkich ocen jakie wystawiłeś:</h5>
+                                </Container>
                                 <CardGroup id="card-group">
                                     {this.state.ratings_data.map(
                                         rating => (
@@ -100,7 +104,8 @@ class Ratings extends React.Component {
                                         )
                                     )}
                                 </CardGroup>
-                                <div><Footer></Footer></div>
+                                
+                                <div id="logged-footer"><Footer></Footer></div>
                             </div>
                         )}
                 </div>

@@ -9,7 +9,7 @@ const PreferredResortsListElement = (props) => {
     function polishCountryName (countryName) {
         if(countryName==="Poland") return "Polska"
         if(countryName==="Czech Republic") return "Czechy"
-        if(countryName==="Slovakia") return "Slovakia"
+        if(countryName==="Slovakia") return "Słowacja"
     }
 
     function truncate(value) {
@@ -37,7 +37,7 @@ const PreferredResortsListElement = (props) => {
                                 <br></br>
                                 <h4>
                                 <i className="star icon"></i>
-                                {resort.first.avgRating}
+                                {resort.first.avgRating.toFixed(1)}
                                 </h4>
                             </Card.Text>
                             </div>

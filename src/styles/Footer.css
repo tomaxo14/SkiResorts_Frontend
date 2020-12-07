@@ -1,5 +1,5 @@
 #footer {
-    background-color: #56839e94;
+    background-color: #83b5d494;
 }
 
 #footer-row {
@@ -11,4 +11,16 @@
 .link {
     color: black;
     text-decoration: underline;
+}
+
+.maps-info {
+    color: black;
+}
+
+#github-col {
+    text-align: right;
+}
+
+#maps-col {
+    text-align: center;
 }

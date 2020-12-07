@@ -75,11 +75,11 @@ class ResortDetails extends React.Component {
         var i;
         for (i = 0; i < this.state.favourites.length; i++) {
             if (this.state.favourites[i].resortId === this.state.resort_details.resortId) {
-                this.setState({ favouriteMessage: "Ośrodek należy do Twoich ulubionych", inFavourites: true });
+                this.setState({ favouriteMessage: "Twój ulubiony", inFavourites: true });
             }
         }
         if (this.state.inFavourites === false) {
-            this.setState({ favouriteMessage: "Chcesz dodać ten ośrodek do ulubionych? " });
+            this.setState({ favouriteMessage: "Dodać do ulubionych?" });
         }
         console.log(resort);
         console.log(user);
@@ -132,7 +132,7 @@ class ResortDetails extends React.Component {
     polishCountryName(countryName) {
         if (countryName === "Poland") return "Polska"
         if (countryName === "Czech Republic") return "Czechy"
-        if (countryName === "Slovakia") return "Slovakia"
+        if (countryName === "Slovakia") return "Słowacja"
     }
 
     onClickFavButton() {
@@ -146,11 +146,11 @@ class ResortDetails extends React.Component {
     }
 
     afterAddFav() {
-        this.setState({ addFavModal: false, favouriteMessage: "Ośrodek należy do Twoich ulubionych", inFavourites: true });
+        this.setState({ addFavModal: false, favouriteMessage: "Twój ulubiony", inFavourites: true });
     }
 
     afterDeleteFav() {
-        this.setState({ deleteFavModal: false, favouriteMessage: "Chcesz dodać ten ośrodek do ulubionych? ", inFavourites: false });
+        this.setState({ deleteFavModal: false, favouriteMessage: "Dodać do ulubionych?", inFavourites: false });
     }
 
     render() {
@@ -171,9 +171,9 @@ class ResortDetails extends React.Component {
                     <NavBar></NavBar>
                     <Container className="container">
                         <Row className="row">
-                            <Col xs={7} md={3}>
+                            <Col xs={7} md={3} id="ratings-col">
                                 <i className="star icon"></i>
-                            Średnia ocen: {this.state.resort_details.avgRating}
+                            Średnia ocen: {this.state.resort_details.avgRating.toFixed(1)}
                                 <br></br>
                                 <i className="hand point up icon"></i>
                             Twoja ocena:
@@ -225,12 +225,12 @@ class ResortDetails extends React.Component {
                             </Col>
                         </Row>
                         <Row className="row">
-                            <Col xs={6} md={5}>
+                            <Col xs={6} md={5} id="info-col">
                                 <h3>Informacje</h3>
                                 {this.state.hasWebsite ? (
                                     <p>
                                         <i className="globe icon"></i>
-                                    Strona internetowa: {this.state.resort_details.website}
+                                    Strona internetowa: <a href={this.state.resort_details.website}><b id="website"> {this.state.resort_details.website} </b></a>
                                     </p>) : (
                                         <br></br>
                                     )}
@@ -272,45 +272,45 @@ class ResortDetails extends React.Component {
                                     Snowpark: <b>nie posiada</b>
                                 </p>
                             </Col>
-                            <Col xs={10} md={7}>
+                            <Col xs={10} md={6} id="img-col">
                                 <h3>Mapa tras i wyciągów</h3>
-                                <a href={this.state.resort_details.skiMap}><img src={this.state.resort_details.skiMap} title="Kliknij aby powiększyć" alt="Mapa" id="skiMap" width="600" height="459"></img></a>
+                                <a href={this.state.resort_details.skiMap}><img src={this.state.resort_details.skiMap} title="Kliknij aby powiększyć" alt="Mapa" id="skiMap" width="520" height="400"></img></a>
 
                             </Col>
                         </Row>
                         <Row id="third-row">
-                            <Col xs={6}>
+                            <Col xs={6} id="weather-col">
                                 <h3 id="actual-weather-title">Aktualna pogoda</h3>
                                 <p>
-                                    <WiThermometer size="20" className="weather-icon"></WiThermometer>
+                                    <WiThermometer size="24" className="weather-icon"></WiThermometer>
                             Temperatura: <b>{this.state.mainWeather.temp} &#8451; </b>
                                 </p>
                                 <p>
-                                    <WiThermometerExterior size="20" className="weather-icon"></WiThermometerExterior>
+                                    <WiThermometerExterior size="24" className="weather-icon"></WiThermometerExterior>
                             Temperatura odczuwalna: <b> {this.state.mainWeather.feels_like} &#8451; </b>
                                 </p>
                                 <p>
-                                    <WiHumidity size="20" className="weather-icon"></WiHumidity>
+                                    <WiHumidity size="24" className="weather-icon"></WiHumidity>
                             Wilgotność: <b> {this.state.mainWeather.humidity}
                                         <span>%</span></b>
                                 </p>
                                 <p>
-                                    <WiStrongWind size="20" className="weather-icon"></WiStrongWind>
+                                    <WiStrongWind size="24" className="weather-icon"></WiStrongWind>
                             Prędkość wiatru: <b> {this.state.wind.speed}
                                         <span>&nbsp;m/s</span></b>
                                 </p>
                                 <p>
-                                    <WiHorizonAlt size="20" className="weather-icon"></WiHorizonAlt>
+                                    <WiHorizonAlt size="24" className="weather-icon"></WiHorizonAlt>
                             Widoczność: <b> {this.state.weather.visibility}
                                         <span>m</span></b>
                                 </p>
                                 <p>
-                                    <WiCloudy size="20" className="weather-icon"></WiCloudy>
+                                    <WiCloudy size="24" className="weather-icon"></WiCloudy>
                             Chmury: <b> {this.state.clouds.all}
                                         <span>%</span></b>
                                 </p>
                                 <div>
-                                    <WiDust size="20" className="weather-icon"></WiDust>
+                                    <WiDust size="24" className="weather-icon"></WiDust>
                             Opis:
                             <b>
                                         {this.state.weatherDescription.map(
@@ -332,7 +332,7 @@ class ResortDetails extends React.Component {
                                 </div>
 
                             </Col>
-                            <Col xs={6}>
+                            <Col xs={6} id="weather-col">
                                 {this.state.weatherReady ? (
                                     <FutureWeather weather={this.state.futureWeatherDaily}></FutureWeather>
                                 ) : (

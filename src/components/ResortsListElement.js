@@ -10,7 +10,7 @@ const ResortsListElement = (props) => {
     function polishCountryName(countryName) {
         if (countryName === "Poland") return "Polska"
         if (countryName === "Czech Republic") return "Czechy"
-        if (countryName === "Slovakia") return "Slovakia"
+        if (countryName === "Slovakia") return "Słowacja"
     }
     let sortedResorts = [...resorts_data];
     const [sortedField, setSortedField] = React.useState(null);
@@ -222,7 +222,7 @@ const ResortsListElement = (props) => {
                                             <br></br>
                                             <h4>
                                                 <i className="star icon"></i>
-                                                {resort.avgRating}
+                                                {resort.avgRating.toFixed(1)}
                                             </h4>
                                         </Card.Text>
                                     </div>

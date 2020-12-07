@@ -60,8 +60,9 @@ th, td {
 }
 
 #distance-div {
-    margin-top: 2em;
-    margin-bottom: -6em;
+    margin-top: 2em !important;
+    margin-bottom: -3em !important;
+    padding-bottom: -5em !important;
 }
 
 
