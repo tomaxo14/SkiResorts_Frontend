@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactMapGL, {Marker} from 'react-map-gl';
+import '../styles/Map.css';
 
 class Map extends React.Component {
 
@@ -36,6 +37,7 @@ class Map extends React.Component {
     render() {
         return (
             <ReactMapGL
+                id="map"
                 mapStyle="mapbox://styles/mapbox/streets-v11"
                 maxZoom={12}
                 minZoom={7}

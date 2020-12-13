@@ -5,3 +5,9 @@
 .jumbotron {
     background-color: #a1cbe7 ;
 }
+
+@media (max-width: 576px) {
+    #zalety {
+        margin: 0px;
+    }
+}

@@ -22,3 +22,9 @@
 #buttons-col {
     text-align: center;
 }
+
+@media (max-width: 576px) {
+    .slider {
+        width: 250px !important;
+    }
+}

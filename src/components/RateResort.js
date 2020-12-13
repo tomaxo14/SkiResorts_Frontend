@@ -68,7 +68,7 @@ const RateResort = (props) =>  {
                       }}
                 />
             </Box>
-            <textarea rows="5" cols="50" onChange={onInputChange} placeholder="Oprócz oceny możesz dodać opinię" id="opinion">
+            <textarea  rows="5" cols="50" onChange={onInputChange} placeholder="Oprócz oceny możesz dodać opinię" id="opinion">
             </textarea>
             {props.user===undefined || props.user===null ? (
                 <Button href="/logowanie" id="rate-button">Zaloguj się aby wystawić ocenę</Button>

@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from './NavBar';
 import Footer from './Footer';
+import MyModal from './MyModal';
 import UserService from '../services/user.service';
 import AuthService from '../services/auth.service';
 import { Button, Container } from 'react-bootstrap';
@@ -15,6 +16,7 @@ class UserLocation extends React.Component {
             userData: [],
             userLocation: [],
             isLoaded: false,
+            showModal: false,
             viewport: {
                 width: 500,
                 height: 300,
@@ -24,6 +26,7 @@ class UserLocation extends React.Component {
             }
         }
         this.onSaveButton = this.onSaveButton.bind(this);
+        this.closeModal = this.closeModal.bind(this);
 
     }
 
@@ -37,6 +40,11 @@ class UserLocation extends React.Component {
 
     onSaveButton(){
         UserService.saveLocation(this.state.viewport.latitude, this.state.viewport.longitude);
+        this.setState({showModal: true});
+    }
+
+    closeModal() {
+        this.setState({showModal: false});
     }
 
     render(){
@@ -52,6 +60,7 @@ class UserLocation extends React.Component {
                 </h6>
                 <p id="map-paragraph">
                 <ReactMapGL
+                id="map-frame"
                 mapStyle="mapbox://styles/mapbox/streets-v11"
                 maxZoom={16}
                 minZoom={4}
@@ -75,6 +84,7 @@ class UserLocation extends React.Component {
             </p>
             <p>
                 <Button id="save-button" className="button" onClick={this.onSaveButton}>Zapisz lokalizację</Button>
+                <MyModal title="Powiadomienie" body="Zapisano lokalizację" show={this.state.showModal} onHide={this.closeModal} />
             </p>
             </Container>
             <div id="location-footer-div"><Footer></Footer></div>

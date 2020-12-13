@@ -14,3 +14,9 @@
     padding-left: 40%;
     margin-top: -3em;
 }
+
+@media (max-width: 576px) {
+    .form-control-admin {
+        width: 18em !important;
+    }
+}

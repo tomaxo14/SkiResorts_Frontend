@@ -10,3 +10,9 @@
 #rate-info {
     font-size: large;
 }
+
+@media only screen and (max-width: 500px) {
+    #opinion {
+        width: 20em !important;
+    }
+}

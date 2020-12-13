@@ -8,6 +8,7 @@ import { Container, Button, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import NavBar from './NavBar';
+import MyModal from './MyModal';
 import '../styles/Preferences.css';
 
 const marks = [
@@ -47,10 +48,12 @@ class Preferences extends React.Component {
             hasPreferences: false,
             userLat: 0,
             userLon: 0,
-            savedLocation: []
+            savedLocation: [],
+            showModal: false
         }
         this.onSaveClick = this.onSaveClick.bind(this);
         this.handlePosition = this.handlePosition.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     async componentDidMount() {
@@ -95,6 +98,11 @@ class Preferences extends React.Component {
     onSaveClick() {
         console.log(this.state.blue, this.state.red, this.state.black, this.state.snowPark, this.state.location)
         UserService.addPreferences(this.state.blue, this.state.red, this.state.black, this.state.snowPark, this.state.location);
+        this.setState({showModal: true});
+    }
+
+    closeModal() {
+        this.setState({showModal: false});
     }
 
     render() {
@@ -104,7 +112,7 @@ class Preferences extends React.Component {
                 <Container className="container">
                     <Row>
                     <Col>
-                    <h2>Zaznacz jak ważna jest dla Ciebie każda z poniższych cech ośrodka. Następnie my zarekomendujemy ośrodki spełniające Twoje wymagania.</h2>
+                    <h2>Zaznacz jak ważna jest dla Ciebie każda z poniższych cech ośrodka. Następnie aplikacja zarekomenduje ośrodki spełniające Twoje wymagania.</h2>
                     {this.state.hasPreferences ? (
                         <div>
                             <br></br>
@@ -120,6 +128,7 @@ class Preferences extends React.Component {
                     </Typography>
                     <Slider
                         className="slider"
+                        id="blueSlopes-slider"
                         value={this.state.blue}
                         aria-labelledby="discrete-slider"
                         valueLabelDisplay="auto"
@@ -134,6 +143,7 @@ class Preferences extends React.Component {
                     </Typography>
                     <Slider
                         className="slider"
+                        id="redSlopes-slider"
                         value={this.state.red}
                         aria-labelledby="discrete-slider"
                         valueLabelDisplay="auto"
@@ -148,6 +158,7 @@ class Preferences extends React.Component {
                     </Typography>
                     <Slider
                         className="slider"
+                        id="blackSlopes-slider"
                         value={this.state.black}
                         aria-labelledby="discrete-slider"
                         valueLabelDisplay="auto"
@@ -162,6 +173,7 @@ class Preferences extends React.Component {
                     </Typography>
                     <Slider
                         className="slider"
+                        id="snowpark-slider"
                         value={this.state.snowPark}
                         aria-labelledby="discrete-slider"
                         valueLabelDisplay="auto"
@@ -176,6 +188,7 @@ class Preferences extends React.Component {
                     </Typography>
                     <Slider
                         className="slider"
+                        id="location-slider"
                         value={this.state.location}
                         aria-labelledby="discrete-slider"
                         valueLabelDisplay="auto"
@@ -189,16 +202,21 @@ class Preferences extends React.Component {
                     <br></br>
                     </Col>
                     <Col id="buttons-col">
-                    <h4 id="buttons-title">Jeśli skończyłeś wybierać preferencję, zapisz je lub kliknij od razu przycisk <i>"Pokaż rekomendowane ośrodki",</i> jeśli 
+                    <h4 id="buttons-title">Jeśli skończyłeś wybierać preferencje, zapisz je lub kliknij od razu przycisk <i>"Pokaż rekomendowane ośrodki",</i> jeśli 
                     nie chcesz zapisywać swoich preferencji na przyszłość</h4>
                     {this.state.hasPreferences ? (
+                        <div>
                         <Button className="preferences-button" onClick={this.onSaveClick}>Zapisz nowe preferencje</Button>
+                        <MyModal title="Powiadomienie" body="Zapisano nowe preferencje" show={this.state.showModal} onHide={this.closeModal} />
+                        </div>
                     ) : (
                         <div>
                             {this.state.currentUser===undefined ? (
                                 <Button className="preferences-button" href="/logowanie">Zaloguj się, aby zapisać preferencje</Button>
-                            ):(
+                            ):(<div>
                                 <Button className="preferences-button" onClick={this.onSaveClick}>Zapisz preferencje</Button>
+                                <MyModal title="Powiadomienie" body="Zapisano preferencje" show={this.state.showModal} onHide={this.closeModal} />
+                                </div>
                             )}                            
                         </div>
                         )}
@@ -214,7 +232,7 @@ class Preferences extends React.Component {
                             userLat: this.state.userLat,
                             userLon: this.state.userLon
                         }}>
-                        <Button className="preferences-button">
+                        <Button className="preferences-button" id="show-recomended-button">
                             Pokaż rekomendowane ośrodki
                 </Button>
                     </Link>

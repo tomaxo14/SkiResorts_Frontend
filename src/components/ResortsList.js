@@ -6,6 +6,7 @@ import NavBar from './NavBar';
 import Footer from './Footer';
 import ResortsListElement from './ResortsListElement.js';
 import '../styles/ResortList.css';
+import { Container } from 'react-bootstrap';
 
 class ResortsList extends React.Component {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, CardGroup, Container, Row, Col } from 'react-bootstrap';
+import { Card, Button, CardGroup, Container, Row, Col, CardColumns, CardDeck } from 'react-bootstrap';
 import '../styles/ResortsListElement.css';
 import { Link } from 'react-router-dom';
 import ResortService from '../services/resort-service';
@@ -129,7 +129,7 @@ const ResortsListElement = (props) => {
     return (<div>
         <Container id="filter-sort-container">
             <Row className="option-row">
-                <Col xs={2}><h4>Sortuj po:</h4></Col>
+                <Col xs={6} md={2} id="sorted-label-col"><h4>Sortuj po:</h4></Col>
                 <Col xs={10}>
                     <Button className="filter-button" onClick={() => setSortedField('avgRating')}>Ocena</Button>
                     <Button className="filter-button" onClick={() => setSortedField('blueSlopes')}>Trasy niebieskie</Button>
@@ -139,9 +139,9 @@ const ResortsListElement = (props) => {
                 </Col>
             </Row>
 
-            <Row className="option-row">
-                <Col xs={2}><h4>Filtruj: </h4></Col>
-                <Col xs={10} className="row">
+            <Row className="option-row" id="filter-row">
+                <Col xs={6} md={2}><h4>Filtruj: </h4></Col>
+                {/* <Col xs={10} className="row">
                     <table>
                         <thead>
                             <tr>
@@ -199,14 +199,78 @@ const ResortsListElement = (props) => {
                             </tr>
                         </tbody>
                     </table>
+                </Col> */}
+                <Col xs={10} className="row">
+
+                                <Col xs={6} md={2} id="filter-col">
+                                <h6 id="filter-label">Kraj</h6>
+                                <select className="form-control" value={choosenCountry} onChange={updateSearchCountry.bind(this)}>
+                                        <option value="">Dowolny</option>
+                                        <option value="Poland">Polska</option>
+                                        <option value="Czech Republic">Czechy</option>
+                                        <option value="Slovakia">Słowacja</option>
+                                    </select>
+                                </Col>
+                                <Col xs={6} md={2} id="filter-col">
+                                <h6 id="filter-label">Ocena</h6>
+                                <select className="form-control" value={choosenRating} onChange={updateSearchRating.bind(this)}>
+                                        <option value="">Dowolna</option>
+                                        <option value="2.5">Powyżej 2.5</option>
+                                        <option value="3">Powyżej 3</option>
+                                        <option value="3.5">Powyżej 3.5</option>
+                                        <option value="4">Powyżej 4</option>
+                                        <option value="4.5">Powyżej 4.5</option>
+                                    </select>
+                                </Col>
+                                <Col xs={6} md={2} id="filter-col">
+                                <h6 id="filter-label">Trasy niebieskie</h6>
+                                <select className="form-control" value={choosenBlue} onChange={updateSearchBlue.bind(this)}>
+                                        <option value="">Dowolna ilość</option>
+                                        <option value="3">Powyżej 3</option>
+                                        <option value="5">Powyżej 5</option>
+                                        <option value="10">Powyżej 10</option>
+                                    </select>
+                                </Col>
+                                <Col xs={6} md={2} id="filter-col">
+                                <h6 id="filter-label">Trasy czerwone</h6>
+                                <select className="form-control" value={choosenRed} onChange={updateSearchRed.bind(this)}>
+                                        <option value="">Dowolna ilość</option>
+                                        <option value="3">Powyżej 3</option>
+                                        <option value="5">Powyżej 5</option>
+                                        <option value="10">Powyżej 10</option>
+                                    </select>
+                                </Col>
+                                <Col xs={7} md={2} id="filter-col">
+                                <h6 id="filter-label">Trasy czarne</h6>
+                                <select className="form-control" value={choosenBlack} onChange={updateSearchBlack.bind(this)}>
+                                        <option value="">Dowolna ilość</option>
+                                        <option value="3">Powyżej 3</option>
+                                        <option value="5">Powyżej 5</option>
+                                        <option value="10">Powyżej 10</option>
+                                    </select>
+                                </Col>
+                                
+                                
+                                
+
+                                    
+
+                                    
+       
+                                    
+ 
+           
+                                    
                 </Col>
             </Row>
         </Container>
-        <CardGroup id="card-group">
+        <div class="container-fluid">
+        <div class="row">
+        <CardDeck  id="card-columns" className="CardDeck  col-lg-12 col-xs-10">
             {filterByBlack.map(
                 resort => (
                     <div key={resort.resortId}>
-                        <Card style={{ width: '30rem' }} className="card">
+                        <Card style={{ width: '30rem' }} className="card" >
 
                             <Card.Body >
 
@@ -214,8 +278,8 @@ const ResortsListElement = (props) => {
                                 <Card.Subtitle className="mb-2 text-muted">
                                     {polishCountryName(resort.location.country)}
                                 </Card.Subtitle>
-                                <div className="row no-gutters">
-                                    <div className="col-md-6">
+                                <div className="row ">
+                                    <div className="col-md-6 col-xs-10">
                                         <br></br>
                                         <Card.Text>
                                             <i>Ocena użytkowników</i>
@@ -226,7 +290,7 @@ const ResortsListElement = (props) => {
                                             </h4>
                                         </Card.Text>
                                     </div>
-                                    <div className="col-md-6">
+                                    <div className="col-md-6 col-xs-10">
                                     <br></br>
                                         <Card.Text>
                                             <i className="circle icon" id="blue-circle"></i>
@@ -252,7 +316,7 @@ const ResortsListElement = (props) => {
                                 )} 
                                 </div>
                                 <div id="button-div">
-                                    <Link to={"/osrodek/" + resort.resortId}><Button className="card-button">Więcej</Button></Link>
+                                    <Link to={"/osrodek/" + resort.resortId}><Button className="card-button" id="more-button">Więcej</Button></Link>
                                     {props.admin ? (
                                         <Link to={{
                                             pathname: '/admin',
@@ -268,7 +332,9 @@ const ResortsListElement = (props) => {
                 )
             )
             }
-        </CardGroup>
+        </CardDeck >
+        </div>
+        </div>
     </div>
     )
 }

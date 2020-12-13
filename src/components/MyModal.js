@@ -24,7 +24,7 @@ class MyModal extends React.Component {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="primary" onClick={() => {this.props.onHide()}}>Rozumiem</Button>
+                    <Button id="ok-button" variant="primary" onClick={() => {this.props.onHide()}}>Rozumiem</Button>
                 </Modal.Footer>
             </Modal>
         </div>

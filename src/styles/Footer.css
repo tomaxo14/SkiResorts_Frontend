@@ -24,3 +24,10 @@
 #maps-col {
     text-align: center;
 }
+
+@media only screen and (max-width: 500px) {
+    #github-col, #maps-col {
+        margin-top: 2em;
+        text-align: left;
+    }
+}

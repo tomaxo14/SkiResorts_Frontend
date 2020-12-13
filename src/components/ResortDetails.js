@@ -171,7 +171,7 @@ class ResortDetails extends React.Component {
                     <NavBar></NavBar>
                     <Container className="container">
                         <Row className="row">
-                            <Col xs={7} md={3} id="ratings-col">
+                            <Col xs={12} md={3} id="ratings-col">
                                 <i className="star icon"></i>
                             Średnia ocen: {this.state.resort_details.avgRating.toFixed(1)}
                                 <br></br>
@@ -205,7 +205,7 @@ class ResortDetails extends React.Component {
                                                 ) : (
                                                         <p>
                                                             <br></br>
-                                                            <Button className="button" onClick={this.onClickFavButton}>Dodaj ośrodek do ulubionych</Button>
+                                                            <Button id="fav-button" className="button" onClick={this.onClickFavButton}>Dodaj ośrodek do ulubionych</Button>
                                                             <MyModal title="Powiadomienie" body="Dodano ośrodek do ulubionych" show={this.state.addFavModal} onHide={this.afterAddFav} />
                                                         </p>
                                                     )}
@@ -216,7 +216,7 @@ class ResortDetails extends React.Component {
 
                                 </p>
                             </Col>
-                            <Col xs={4} md={5} id="title-column">
+                            <Col xs={10} md={5} xs={6} id="title-column">
                                 <h1>{this.state.resort_details.name}</h1>
                                 <h3>{this.polishCountryName(this.state.location.country)}</h3>
                             </Col>
@@ -225,7 +225,7 @@ class ResortDetails extends React.Component {
                             </Col>
                         </Row>
                         <Row className="row">
-                            <Col xs={6} md={5} id="info-col">
+                            <Col xs={10} md={5} id="info-col">
                                 <h3>Informacje</h3>
                                 {this.state.hasWebsite ? (
                                     <p>
@@ -272,14 +272,14 @@ class ResortDetails extends React.Component {
                                     Snowpark: <b>nie posiada</b>
                                 </p>
                             </Col>
-                            <Col xs={10} md={6} id="img-col">
+                            <Col xs={8} md={6} id="img-col">
                                 <h3>Mapa tras i wyciągów</h3>
                                 <a href={this.state.resort_details.skiMap}><img src={this.state.resort_details.skiMap} title="Kliknij aby powiększyć" alt="Mapa" id="skiMap" width="520" height="400"></img></a>
 
                             </Col>
                         </Row>
                         <Row id="third-row">
-                            <Col xs={6} id="weather-col">
+                            <Col xs={10} md={6} id="weather-col">
                                 <h3 id="actual-weather-title">Aktualna pogoda</h3>
                                 <p>
                                     <WiThermometer size="24" className="weather-icon"></WiThermometer>
@@ -332,7 +332,7 @@ class ResortDetails extends React.Component {
                                 </div>
 
                             </Col>
-                            <Col xs={6} id="weather-col">
+                            <Col xs={10} md={6} id="weather-col">
                                 {this.state.weatherReady ? (
                                     <FutureWeather weather={this.state.futureWeatherDaily}></FutureWeather>
                                 ) : (
@@ -342,7 +342,7 @@ class ResortDetails extends React.Component {
                             </Col>
                         </Row>
                         <Row id="forth-row">
-                            <Col xs={6}>
+                            <Col xs={10} md={6}>
                                 <h3>Opinie</h3>
                                 {this.state.opinions != null ? (
                                     <Opinion opinions={this.state.opinions} />
@@ -352,10 +352,10 @@ class ResortDetails extends React.Component {
                                 }
                             </Col>
 
-                            <Col xs={6}>
+                            <Col xs={6} id="col-map">
                                 <div className="div-map">
                                 <h3>Ośrodek na mapie</h3>
-                                    <Map lat={this.state.location.latitude} lon={this.state.location.longitude} zoom={8} maxZoom={12} minZoom={7} />
+                                    <Map   lat={this.state.location.latitude} lon={this.state.location.longitude} zoom={8} maxZoom={12} minZoom={7} />
                                 </div>
                             </Col>
                         </Row>

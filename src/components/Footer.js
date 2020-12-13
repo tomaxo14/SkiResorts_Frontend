@@ -17,7 +17,7 @@ const Footer = () => {
                     <Col id="maps-col">
                     <div xmlns="http://creativecommons.org/ns#" about="https://skimap.org/"><a className="maps-info" rel="cc:attributionURL" property="cc:attributionName" href="https://skimap.org/">Maps provided by Skimap.org</a> / <a className="maps-info" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">CC BY-NC-SA 3.0</a></div>
                     </Col>
-                    <Col id="github-col">
+                    <Col xs={10} md={4} id="github-col">
                     <h3>Twórca</h3>
                     <p>Tomasz Przybylski <a href="https://github.com/tomaxo14" className="link">GitHub</a></p>
                     </Col>
