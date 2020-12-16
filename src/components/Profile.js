@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import AuthService from "../services/auth.service";
-import NavBar from "./NavBar";
 
 class Profile extends Component {
   constructor(props) {

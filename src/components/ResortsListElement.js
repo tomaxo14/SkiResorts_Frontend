@@ -1,8 +1,7 @@
 import React from 'react';
-import { Card, Button, CardGroup, Container, Row, Col, CardColumns, CardDeck } from 'react-bootstrap';
+import { Card, Button, Container, Row, Col, CardDeck } from 'react-bootstrap';
 import '../styles/ResortsListElement.css';
 import { Link } from 'react-router-dom';
-import ResortService from '../services/resort-service';
 
 const ResortsListElement = (props) => {
 
@@ -248,24 +247,12 @@ const ResortsListElement = (props) => {
                                         <option value="5">Powyżej 5</option>
                                         <option value="10">Powyżej 10</option>
                                     </select>
-                                </Col>
-                                
-                                
-                                
-
-                                    
-
-                                    
-       
-                                    
- 
-           
-                                    
+                                </Col>               
                 </Col>
             </Row>
         </Container>
-        <div class="container-fluid">
-        <div class="row">
+        <div className="container-fluid">
+        <div className="row">
         <CardDeck  id="card-columns" className="CardDeck  col-lg-12 col-xs-10">
             {filterByBlack.map(
                 resort => (
@@ -284,10 +271,10 @@ const ResortsListElement = (props) => {
                                         <Card.Text>
                                             <i>Ocena użytkowników</i>
                                             <br></br>
-                                            <h4>
+                                            <span id="rating-value">
                                                 <i className="star icon"></i>
                                                 {resort.avgRating.toFixed(1)}
-                                            </h4>
+                                            </span>
                                         </Card.Text>
                                     </div>
                                     <div className="col-md-6 col-xs-10">

@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from './NavBar';
 import Footer from './Footer';
+import MyModal from './MyModal';
 import Form from 'react-bootstrap/Form';
 import {Button, Container, Row, Col} from 'react-bootstrap';
 import '../styles/AdminForm.css';
@@ -27,7 +28,8 @@ class AdminForm extends React.Component {
             website: "",
             resortId: props.location.resortId,
             resort_data: [],
-            resort_location: []
+            resort_location: [],
+            showModal: false
         }
 
         this.onChangeName = this.onChangeName.bind(this);
@@ -45,6 +47,7 @@ class AdminForm extends React.Component {
         this.onChangeLongitude = this.onChangeLongitude.bind(this);
         this.onChangeWebsite = this.onChangeWebsite.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     async componentDidMount() {
@@ -171,6 +174,11 @@ class AdminForm extends React.Component {
             ResortService.addResort(this.state.name, this.state.blue, this.state.red, this.state.black, this.state.chairlifts, this.state.gondolas, this.state.tBars,
                 this.state.platters, this.state.carpets, this.state.snowpark, this.state.country, this.state.latitude, this.state.longitude, this.state.website)
         }
+        this.setState({showModal: true});
+    }
+
+    closeModal() {
+        this.setState({showModal: false});
     }
 
     render() {
@@ -272,13 +280,19 @@ class AdminForm extends React.Component {
                     </Row>
                     <div id="add-button-div">
                     {this.state.resortId!==undefined ? (
+                        <div>
                         <Button id="add-button" variant="primary" type="submit" >
                         Edytuj ośrodek
                         </Button>
+                        <MyModal title="Powiadomienie" body="Edytowano ośrodek" show={this.state.showModal} onHide={this.closeModal} />
+                        </div>
                     ):(
+                        <div>
                         <Button id="add-button" variant="primary" type="submit" >
                         Dodaj ośrodek
                         </Button>
+                        <MyModal title="Powiadomienie" body="Dodano ośrodek" show={this.state.showModal} onHide={this.closeModal} />
+                        </div>
                     )}
                     </div>
                 </Form>

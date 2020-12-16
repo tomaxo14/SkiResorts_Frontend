@@ -3,9 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 
 class MyModal extends React.Component {
 
-    constructor(props){
-        super(props);
-    }
+
     render(){
     return (
         <div>

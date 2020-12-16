@@ -3,9 +3,7 @@ import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import UserService from '../services/user.service';
-import authHeader from '../services/auth-header';
 import MyModal from './MyModal';
-import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import '../styles/RateResort.css';
 
@@ -74,7 +72,7 @@ const RateResort = (props) =>  {
                 <Button href="/logowanie" id="rate-button">Zaloguj się aby wystawić ocenę</Button>
             ) : (
                 <div>
-                {message == '' || message == undefined ? (
+                {message === '' || message === undefined ? (
                 <div>
                     {props.alreadyRated ? (
                         <div>

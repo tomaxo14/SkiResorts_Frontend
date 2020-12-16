@@ -5,7 +5,7 @@ import CheckButton from "react-validation/build/button";
 import authHeader from "../services/auth-header"
 import NavBar from './NavBar';
 import Footer from './Footer';
-import {Button, Container, Row, Col} from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import '../styles/ChangePassword.css'
 
 const required = value => {
@@ -124,19 +124,19 @@ class ChangePassword extends React.Component {
                     </header>
 
                     <Form onSubmit={this.handleChangePassword} ref={c => this.form = c}>
-                        <div class="form-group">
-                            <label for="exampleInputOldPassword">Podaj swoje stare hasło</label>
-                            <Input type="password" id="password-form" className="form-control" value={oldPassword} onChange={this.onChangeOldPassword} validations={[required]} id="exampleInputOldPassword" />
+                        <div className="form-group">
+                            <label htmlFor="exampleInputOldPassword">Podaj swoje stare hasło</label>
+                            <Input type="password" className="form-control" value={oldPassword} onChange={this.onChangeOldPassword} validations={[required]} id="exampleInputOldPassword" />
                         </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputNewPassowrd">Podaj nowe hasło</label>
-                            <Input type="password" id="password-form" className="form-control" value={newPassword} onChange={this.onChangeNewPassword} validations={[required, vpassword]} id="exampleInputNewPassowrd" />
+                        <div className="form-group">
+                            <label htmlFor="exampleInputNewPassowrd">Podaj nowe hasło</label>
+                            <Input type="password" className="form-control" value={newPassword} onChange={this.onChangeNewPassword} validations={[required, vpassword]} id="exampleInputNewPassowrd" />
                         </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputRepeatedOldPassword">Powtórz swoje noew hasło</label>
-                            <Input type="password" id="password-form" className="form-control" value={repeatedNewPassword} onChange={this.onChangeRepeatedNewPassword} validations={[required, vpassword]} id="exampleInputRepeatedOldPassword" />
+                        <div className="form-group">
+                            <label htmlFor="exampleInputRepeatedOldPassword">Powtórz swoje noew hasło</label>
+                            <Input type="password" className="form-control" value={repeatedNewPassword} onChange={this.onChangeRepeatedNewPassword} validations={[required, vpassword]} id="exampleInputRepeatedOldPassword" />
                         </div>
 
                         <button

@@ -1,5 +1,5 @@
 import React from 'react';
-import { WiDaySunny, WiThermometer, WiThermometerExterior, WiHumidity, WiStrongWind, WiHorizonAlt, WiCloudy, WiDust } from 'weather-icons-react';
+import { WiThermometer, WiThermometerExterior, WiHumidity, WiStrongWind, WiCloudy, WiDust } from 'weather-icons-react';
 import Select from 'react-select';
 import '../styles/FutureWeather.css';
 

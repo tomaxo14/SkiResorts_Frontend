@@ -35,10 +35,10 @@ const PreferredResortsListElement = (props) => {
                             <Card.Text>
                                 <i>Ocena użytkowników</i>
                                 <br></br>
-                                <h4>
+                                <span id="rating-value">
                                 <i className="star icon"></i>
                                 {resort.first.avgRating.toFixed(1)}
-                                </h4>
+                                </span>
                             </Card.Text>
                             </div>
                             <div className="col-md-6">

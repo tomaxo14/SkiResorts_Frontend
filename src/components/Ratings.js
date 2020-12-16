@@ -21,7 +21,7 @@ class Ratings extends React.Component {
     async componentDidMount() {
         const user = AuthService.getCurrentUser();
         var ratings = undefined;
-        if (user != undefined) {
+        if (user !== undefined) {
             ratings = await UserService.yourRatings();
             this.setState({ ratings_data: ratings.data, isLoaded: true })
             console.log(this.state.ratings_data);
@@ -82,14 +82,16 @@ class Ratings extends React.Component {
                                                             <br></br>
                                                             <Card.Text>
 
-                                                                <h4>
+                                                                <span id="rating-value">
                                                                     <i className="star icon"></i>
                                                                     Twoja ocena: &nbsp;
                                                                     {rating.value}
-                                                                </h4>
-                                                                <h6 id="message-text">
+                                                                </span>
+                                                                <br></br>
+                                                                <br></br>
+                                                                <span id="message-text">
                                                                     <i>{rating.message}</i>
-                                                                </h6>
+                                                                </span>
                                                                 
                                                             </Card.Text>
                                                             

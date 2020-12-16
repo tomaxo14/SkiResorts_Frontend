@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, NavDropdown, NavLink, Button } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown} from 'react-bootstrap'
 import AuthService from '../services/auth.service'
 import '../styles/NavBar.css';
 
@@ -49,7 +49,7 @@ class NavBar extends React.Component {
 
         return (
 
-            <Navbar className="navbar" variant="dark" expand="lg" className="sticky-top">
+            <Navbar id="navbar" variant="dark" expand="lg" className="sticky-top">
                 <Navbar.Brand href="/"><h3>PolandSki</h3></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -77,7 +77,7 @@ class NavBar extends React.Component {
                             <Nav>
                                 <Navbar.Text href="#profil" id="login-text">Zalogowany: {this.state.currentUser.login}</Navbar.Text>
                                 <NavDropdown title="Zarządzanie kontem" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="/lokalizacja">Zapisz lokalizację</NavDropdown.Item>
+                                <NavDropdown.Item href="/lokalizacja">Twoja lokalizacja</NavDropdown.Item>
                                 <NavDropdown.Item href="/zmianaHasla">Zmiana hasła</NavDropdown.Item>
                         </NavDropdown>
                                 <Nav.Link href="/logowanie" onClick={this.logout}>Wyloguj</Nav.Link>

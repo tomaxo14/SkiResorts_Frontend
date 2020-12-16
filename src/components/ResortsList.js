@@ -6,7 +6,6 @@ import NavBar from './NavBar';
 import Footer from './Footer';
 import ResortsListElement from './ResortsListElement.js';
 import '../styles/ResortList.css';
-import { Container } from 'react-bootstrap';
 
 class ResortsList extends React.Component {
 
@@ -27,6 +26,7 @@ class ResortsList extends React.Component {
 
     async componentDidMount() {
         const user = AuthService.getCurrentUser();
+        console.log(user);
         
         if(user !== undefined && user !== null) {
             this.setState({ userRoles: user.roles },
@@ -38,7 +38,7 @@ class ResortsList extends React.Component {
         }
 
         var savedLocation = undefined;
-        if (user != undefined) {
+        if (user !== undefined && user!==null) {
             savedLocation = await UserService.yourLocation();
             this.setState({userSavedLocation: savedLocation.data})
             console.log(savedLocation);            

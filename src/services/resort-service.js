@@ -58,4 +58,4 @@ class ResortService {
     }
 }
 
-export default new ResortService;
+export default new ResortService();

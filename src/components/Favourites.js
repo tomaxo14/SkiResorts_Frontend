@@ -26,7 +26,7 @@ class Favourites extends React.Component {
         this.sleep(500).then(async() => {
             const user = AuthService.getCurrentUser();
             var favourites = undefined;
-            if (user != undefined) {
+            if (user !== undefined) {
                 favourites = await UserService.getFavouritesWithGeo(this.state.userLat, this.state.userLon);
                 this.setState({ favourites_data: favourites.data, isLoaded: true })
                 console.log(this.state.favourites_data);

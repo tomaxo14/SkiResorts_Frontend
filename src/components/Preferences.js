@@ -1,7 +1,6 @@
 import React from 'react';
 import AuthService from '../services/auth.service';
 import UserService from '../services/user.service'
-import ResortService from '../services/resort-service'
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import { Container, Button, Col, Row } from 'react-bootstrap';
@@ -58,7 +57,8 @@ class Preferences extends React.Component {
 
     async componentDidMount() {
         const user = AuthService.getCurrentUser();
-        if (user != undefined) {
+        console.log(user);
+        if (user !== undefined && user !== null) {
             this.setState({ currentUser: user })
             const preferences = await UserService.yourPreferences();
             if (preferences != null) {
@@ -73,7 +73,7 @@ class Preferences extends React.Component {
         //     // console.log(position.coords.latitude, position.coords.longitude);
         // });
         var savedLocation = undefined;
-        if (user != undefined) {
+        if (user !== undefined && user !== null) {
             savedLocation = await UserService.yourLocation();
             this.setState({savedLocation: savedLocation.data})
             console.log(savedLocation);            
@@ -119,7 +119,7 @@ class Preferences extends React.Component {
                             <h4><i>Twoje zapisane preferencje są następujące:</i></h4>
                         </div>
                     ) : (
-                            <h3></h3>
+                            <span></span>
                         )}
 
                     

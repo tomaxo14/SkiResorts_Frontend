@@ -1,8 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { WiDaySunny, WiThermometer, WiThermometerExterior, WiHumidity, WiStrongWind, WiHorizonAlt, WiCloudy, WiDust } from 'weather-icons-react';
+import { WiThermometer, WiThermometerExterior, WiHumidity, WiStrongWind, WiHorizonAlt, WiCloudy, WiDust } from 'weather-icons-react';
 // import {Map, GoogleApiWrapper} from 'google-map-react'
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import ResortService from '../services/resort-service';
 import AuthService from '../services/auth.service';
 import UserService from '../services/user.service';
@@ -17,13 +16,7 @@ import '../styles/ResortDetails.css';
 import Talerzyk from "../img/ski_lift_icons/talerzyk.png";
 import Gondola from "../img/ski_lift_icons/gondola.png";
 import Kanapa from "../img/ski_lift_icons/kanapa.png";
-import Krzeslo from "../img/ski_lift_icons/krzeslo.png";
 import Orczyk from "../img/ski_lift_icons/orczyk.png";
-import BackButton from "./BackButton";
-{/* <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPZsBnGGDcs1McAH94Gp3luxepH9079Vg"
-  type="text/javascript"></script> */}
-
-//   const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class ResortDetails extends React.Component {
 
@@ -63,7 +56,7 @@ class ResortDetails extends React.Component {
         const user = AuthService.getCurrentUser();
         var ratings = undefined;
         var favourites = undefined;
-        if (user != undefined) {
+        if (user !== undefined) {
             ratings = await UserService.yourRatings();
             favourites = await UserService.yourFavourites();
             this.setState({ ratings: ratings.data, favourites: favourites.data })
@@ -216,7 +209,7 @@ class ResortDetails extends React.Component {
 
                                 </p>
                             </Col>
-                            <Col xs={10} md={5} xs={6} id="title-column">
+                            <Col xs={10} md={5} id="title-column">
                                 <h1>{this.state.resort_details.name}</h1>
                                 <h3>{this.polishCountryName(this.state.location.country)}</h3>
                             </Col>
@@ -247,19 +240,19 @@ class ResortDetails extends React.Component {
                                 Trasy czarne: <b>{this.state.resort_details.blackSlopes}</b>
                                 </p>
                                 <p>
-                                    <img src={Gondola} width="12" height="15" className="lifts-img"></img>
+                                    <img src={Gondola} width="12" height="15" className="lifts-img" alt="Gondola"></img>
                                 Gondole: <b>{this.state.resort_details.gondolas}</b>
                                 </p>
                                 <p>
-                                    <img src={Kanapa} width="15" height="15" className="lifts-img"></img>
+                                    <img src={Kanapa} width="15" height="15" className="lifts-img" alt="Kanapa"></img>
                                 Kanapy: <b>{this.state.resort_details.chairlifts}</b>
                                 </p>
                                 <p>
-                                    <img src={Orczyk} width="15" height="15" className="lifts-img"></img>
+                                    <img src={Orczyk} width="15" height="15" className="lifts-img" alt="Orczyk"></img>
                                 Orczyki: <b>{this.state.resort_details.tbars}</b>
                                 </p>
                                 <p>
-                                    <img src={Talerzyk} width="15" height="15" className="lifts-img"></img>
+                                    <img src={Talerzyk} width="15" height="15" className="lifts-img" alt="Talerzyk"></img>
                                 Wyciągi talerzowe: <b>{this.state.resort_details.platters}</b>
                                 </p>
                                 <p>

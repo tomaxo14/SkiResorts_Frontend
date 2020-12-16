@@ -32,7 +32,7 @@ class UserLocation extends React.Component {
 
     async componentDidMount() {
         const user = AuthService.getCurrentUser();
-        if (user != undefined) {
+        if (user !== undefined) {
             this.setState({userData: user.data, userLocation: this.state.userData.location, isLoaded: true })
             console.log(this.state.userLocation);
         }
@@ -58,7 +58,7 @@ class UserLocation extends React.Component {
                      wraz z wciśniętym lewym przyciskiem myszy, jeśli mysz jest ustawiona na mapie. Możesz również przybliżać i oddalać mapę
                     używając gałki myszy.
                 </h6>
-                <p id="map-paragraph">
+                <div id="map-paragraph">
                 <ReactMapGL
                 id="map-frame"
                 mapStyle="mapbox://styles/mapbox/streets-v11"
@@ -81,11 +81,11 @@ class UserLocation extends React.Component {
                         <i className="red big map marker alternate icon"></i>
                     </Marker>)}
             </ReactMapGL>
-            </p>
-            <p>
+            </div>
+            <div>
                 <Button id="save-button" className="button" onClick={this.onSaveButton}>Zapisz lokalizację</Button>
                 <MyModal title="Powiadomienie" body="Zapisano lokalizację" show={this.state.showModal} onHide={this.closeModal} />
-            </p>
+            </div>
             </Container>
             <div id="location-footer-div"><Footer></Footer></div>
             </div>

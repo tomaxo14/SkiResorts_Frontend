@@ -107,6 +107,10 @@ th, td {
     }
 }  
 
+#rating-value {
+    font-size: 1.6em;
+}
+
 /* @media (max-width: 2000px) {
     .card-columns {
         -webkit-column-count:3 !important;
