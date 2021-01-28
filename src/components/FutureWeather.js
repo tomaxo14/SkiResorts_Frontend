@@ -5,33 +5,13 @@ import '../styles/FutureWeather.css';
 
 const FutureWeather = (props) => {
 
+    var tempDay = new Date();
+    var dates=[];
+    for(var i=0; i<7; i++) {
+        tempDay.setDate(tempDay.getDate()+1);
+        dates[i] = {value: i+1, label: String(tempDay.getDate()).padStart(2, '0') + "." + String(tempDay.getMonth() + 1).padStart(2, '0')}
+    }
 
-    // const firstDay = weatherData[1];
-    // const secondDay = weatherData[2];
-    // const thirdDay = weatherData[3];
-    // const forthDay = weatherData[4];
-    // const fifthDay = weatherData[5];
-    // const sixthDay = weatherData[6];
-    // const seventhDay = weatherData[7];
-
-    
-    var today = new Date();
-    var firstDay = String(today.getDate()+1).padStart(2, '0') + "." + String(today.getMonth() + 1).padStart(2, '0');
-    var secondDay = String(today.getDate()+2).padStart(2, '0') + "." + String(today.getMonth() + 1).padStart(2, '0');
-    var thirdDay = String(today.getDate()+3).padStart(2, '0') + "." + String(today.getMonth() + 1).padStart(2, '0');
-    var forthDay = String(today.getDate()+4).padStart(2, '0') + "." + String(today.getMonth() + 1).padStart(2, '0');
-    var fifthDay = String(today.getDate()+5).padStart(2, '0') + "." + String(today.getMonth() + 1).padStart(2, '0');
-    var sixthDay = String(today.getDate()+6).padStart(2, '0') + "." + String(today.getMonth() + 1).padStart(2, '0');
-    var seventhDay = String(today.getDate()+7).padStart(2, '0') + "." + String(today.getMonth() + 1).padStart(2, '0');
-    let dates = [
-        {value: 1, label: firstDay},
-        {value: 2, label: secondDay},
-        {value: 3, label: thirdDay},
-        {value: 4, label: forthDay},
-        {value: 5, label: fifthDay},
-        {value: 6, label: sixthDay},
-        {value: 7, label: seventhDay}
-    ];
     const [choosenDay, setChoosenDay] = React.useState(dates[0].value);
     const [weatherData, setWeatherData] = React.useState(props.weather);
     console.log(weatherData);
