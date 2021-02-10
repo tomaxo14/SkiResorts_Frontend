@@ -1,7 +1,8 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
-const API_URL = "http://localhost:8080/api/auth/";
+// const API_URL = "http://localhost:8080/api/auth/";
+const API_URL = "https://ski-resorts-heroku.herokuapp.com/api/auth/";
 
 class AuthService {
   login(login, password) {

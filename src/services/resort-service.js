@@ -1,11 +1,12 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 
-const API_URL = 'http://localhost:8080/';
+// const API_URL = 'http://localhost:8080/';
+const API_URL = 'https://ski-resorts-heroku.herokuapp.com/';
 const WEATHER_API_URL = 'http://api.openweathermap.org/data/2.5/weather?lat=';
 const WEATHER_API_URL_SEVEN_DAYS = 'http://api.openweathermap.org/data/2.5/onecall?lat=';
 const WEATHER_API_URL_ENDING = '&units=metric&lang=pl&appid=621d81a28a5e153d8b0c65721e9c78c8';
-const API_URL_BASIC = `http://localhost:8080/`;
+
 
 class ResortService {
 
@@ -40,7 +41,7 @@ class ResortService {
             method: 'POST',
             headers : authHeader()
             };
-            let url = API_URL_BASIC + `addResort?name=` + name + `&blue=` + blue + `&red=` + red + `&black=` + black + `&chairlifts=` + chairlifts + `&gondolas=` + gondolas
+            let url = API_URL + `addResort?name=` + name + `&blue=` + blue + `&red=` + red + `&black=` + black + `&chairlifts=` + chairlifts + `&gondolas=` + gondolas
             + `&tBars=` + tBars + `&platters=` + platters + `&carpets=` + carpets + `&snowpark=` + snowpark + `&country=` + country + `&latitude=` + latitude + `&longitude=` + longitude
             + `&website=` + website;
             fetch(url,options).then(res => console.log(res));
@@ -51,7 +52,7 @@ class ResortService {
             method: 'PUT',
             headers : authHeader()
             };
-            let url = API_URL_BASIC + `editResort?resortId=` + resortId + `&name=` + name + `&blue=` + blue + `&red=` + red + `&black=` + black + `&chairlifts=` + chairlifts + `&gondolas=` + gondolas
+            let url = API_URL + `editResort?resortId=` + resortId + `&name=` + name + `&blue=` + blue + `&red=` + red + `&black=` + black + `&chairlifts=` + chairlifts + `&gondolas=` + gondolas
             + `&tBars=` + tBars + `&platters=` + platters + `&carpets=` + carpets + `&snowpark=` + snowpark + `&country=` + country + `&latitude=` + latitude + `&longitude=` + longitude
             + `&website=` + website;
             fetch(url,options).then(res => console.log(res));
