@@ -56,7 +56,7 @@ class ResortDetails extends React.Component {
         const user = AuthService.getCurrentUser();
         var ratings = undefined;
         var favourites = undefined;
-        if (user !== undefined) {
+        if (user !== undefined && user!== null) {
             ratings = await UserService.yourRatings();
             favourites = await UserService.yourFavourites();
             this.setState({ ratings: ratings.data, favourites: favourites.data })
@@ -177,37 +177,37 @@ class ResortDetails extends React.Component {
                                     )
                                 }
 
-                                <p>
+                                <div>
                                     {this.state.currentUser === undefined || this.state.currentUser === null ? (
                                         <p>
                                             <br></br>
                                             <Button href="/logowanie" className="button">Zaloguj się aby dodać ośrodek do ulubionych</Button>
                                         </p>
                                     ) : (
-                                            <p>
+                                            <div>
                                                 <br></br>
                                                 <i className="heart icon"></i>
                                                 {this.state.favouriteMessage}
 
                                                 {this.state.inFavourites === true ? (
-                                                    <p>
+                                                    <div>
                                                         <br></br>
                                                         <Button className="button" onClick={this.onClickDeleteFavButton}>Usuń ośrodek z ulubionych</Button>
                                                         <MyModal title="Powiadomienie" body="Usunięto ośrodek z ulubionych" show={this.state.deleteFavModal} onHide={this.afterDeleteFav} />
-                                                    </p>
+                                                    </div>
                                                 ) : (
-                                                        <p>
+                                                        <div>
                                                             <br></br>
                                                             <Button id="fav-button" className="button" onClick={this.onClickFavButton}>Dodaj ośrodek do ulubionych</Button>
                                                             <MyModal title="Powiadomienie" body="Dodano ośrodek do ulubionych" show={this.state.addFavModal} onHide={this.afterAddFav} />
-                                                        </p>
+                                                        </div>
                                                     )}
-                                            </p>
+                                            </div>
                                         )
                                     }
 
 
-                                </p>
+                                </div>
                             </Col>
                             <Col xs={10} md={5} id="title-column">
                                 <h1>{this.state.resort_details.name}</h1>

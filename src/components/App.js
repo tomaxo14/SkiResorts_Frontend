@@ -15,8 +15,14 @@ import Ratings from "./Ratings";
 import UserLocation from "./UserLocation";
 import AdminForm from "./AdminForm";
 import ChangePassword from "./ChangePassword";
+import AuthService from "../services/auth.service";
 
 class App extends Component {
+
+  componentDidMount() {
+    AuthService.checkTokenExpiration();
+  }
+
   render() {
     return (
       <Router>
