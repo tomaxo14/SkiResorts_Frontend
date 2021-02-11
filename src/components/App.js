@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from 'react-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'
@@ -27,7 +28,6 @@ class App extends Component {
     return (
       <Router basename={process.env.PUBLIC_URL}>
       {/* <Router basename={'SkiResorts_Frontend'}> */}
-      <div>
           <Switch>
           <Route path="/" exact component={Home}/>
           <Route path="/logowanie" component={LoginForm}/>
@@ -43,7 +43,6 @@ class App extends Component {
           <Route path="/admin" component={AdminForm}/>
           <Route path="/zmianaHasla" component={ChangePassword} />
           </Switch>
-      </div>
       </Router>
   )
   }
