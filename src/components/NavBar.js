@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown} from 'react-bootstrap'
+import { Link } from "react-router-dom";
 import AuthService from '../services/auth.service'
 import '../styles/NavBar.css';
 
@@ -54,7 +55,7 @@ class NavBar extends React.Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="/osrodki">Ośrodki</Nav.Link>
+                        <Nav.Link as={Link} href="/osrodki">Ośrodki</Nav.Link>
                         <Nav.Link href="/preferencje">Preferencje</Nav.Link>
 
                         {this.state.currentUser ? (
