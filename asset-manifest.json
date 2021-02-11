@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/SkiResorts_Frontend/static/css/main.7326f8e5.chunk.css",
-    "main.js": "/SkiResorts_Frontend/static/js/main.74d2e344.chunk.js",
-    "main.js.map": "/SkiResorts_Frontend/static/js/main.74d2e344.chunk.js.map",
+    "main.js": "/SkiResorts_Frontend/static/js/main.c7b9b065.chunk.js",
+    "main.js.map": "/SkiResorts_Frontend/static/js/main.c7b9b065.chunk.js.map",
     "runtime-main.js": "/SkiResorts_Frontend/static/js/runtime-main.2a06bb3e.js",
     "runtime-main.js.map": "/SkiResorts_Frontend/static/js/runtime-main.2a06bb3e.js.map",
     "static/css/2.d9ad5f5c.chunk.css": "/SkiResorts_Frontend/static/css/2.d9ad5f5c.chunk.css",
-    "static/js/2.fc4ad448.chunk.js": "/SkiResorts_Frontend/static/js/2.fc4ad448.chunk.js",
-    "static/js/2.fc4ad448.chunk.js.map": "/SkiResorts_Frontend/static/js/2.fc4ad448.chunk.js.map",
+    "static/js/2.ca4edf89.chunk.js": "/SkiResorts_Frontend/static/js/2.ca4edf89.chunk.js",
+    "static/js/2.ca4edf89.chunk.js.map": "/SkiResorts_Frontend/static/js/2.ca4edf89.chunk.js.map",
     "index.html": "/SkiResorts_Frontend/index.html",
-    "precache-manifest.ab75bf2d835e6de3ad160cce5ef6c435.js": "/SkiResorts_Frontend/precache-manifest.ab75bf2d835e6de3ad160cce5ef6c435.js",
+    "precache-manifest.d33d398a7ff90231904df10a82db455d.js": "/SkiResorts_Frontend/precache-manifest.d33d398a7ff90231904df10a82db455d.js",
     "service-worker.js": "/SkiResorts_Frontend/service-worker.js",
     "static/css/2.d9ad5f5c.chunk.css.map": "/SkiResorts_Frontend/static/css/2.d9ad5f5c.chunk.css.map",
     "static/css/main.7326f8e5.chunk.css.map": "/SkiResorts_Frontend/static/css/main.7326f8e5.chunk.css.map",
-    "static/js/2.fc4ad448.chunk.js.LICENSE.txt": "/SkiResorts_Frontend/static/js/2.fc4ad448.chunk.js.LICENSE.txt",
+    "static/js/2.ca4edf89.chunk.js.LICENSE.txt": "/SkiResorts_Frontend/static/js/2.ca4edf89.chunk.js.LICENSE.txt",
     "static/media/gondola.png": "/SkiResorts_Frontend/static/media/gondola.bf0160d5.png",
     "static/media/kanapa.png": "/SkiResorts_Frontend/static/media/kanapa.cb320281.png",
     "static/media/slide1.jpg": "/SkiResorts_Frontend/static/media/slide1.5099f48d.jpg",
@@ -24,8 +24,8 @@
   "entrypoints": [
     "static/js/runtime-main.2a06bb3e.js",
     "static/css/2.d9ad5f5c.chunk.css",
-    "static/js/2.fc4ad448.chunk.js",
+    "static/js/2.ca4edf89.chunk.js",
     "static/css/main.7326f8e5.chunk.css",
-    "static/js/main.74d2e344.chunk.js"
+    "static/js/main.c7b9b065.chunk.js"
   ]
 }
