@@ -29,12 +29,12 @@ class App extends Component {
       {/* <Router basename={'SkiResorts_Frontend'}> */}
       <div>
           <Switch>
+          <Route path="/" exact component={Home}/>
           <Route path="/logowanie" component={LoginForm}/>
           <Route path="/rejestracja" component={RegisterForm}/>
           <Route path="/profil" component={Profile}/>
           <Route path="/osrodki" component={ResortsList}/>
           <Route path="/osrodek/:id" component={ResortDetails}/>
-          <Route path="/" exact component={Home}/>
           <Route path="/preferencje" component={Preferences}/>
           <Route path="/preferowaneOsrodki" component={PreferredResortsList}/>
           <Route path="/ulubione" component={Favourites}/>
