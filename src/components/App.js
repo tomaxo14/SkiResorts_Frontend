@@ -4,7 +4,7 @@ import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'
 import Profile from './Profile'
 import Home from './Home';
-import { Switch, BrowserRouter as Router, Route} from "react-router-dom";
+import { Switch, HashRouter as Router, Route} from "react-router-dom";
 import '../styles/App.css';
 import ResortsList from "./ResortsList";
 import ResortDetails from "./ResortDetails";
