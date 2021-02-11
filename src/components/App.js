@@ -4,7 +4,7 @@ import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'
 import Profile from './Profile'
 import Home from './Home';
-import { Switch, HashRouter as Router, Route} from "react-router-dom";
+import { Switch, BrowserRouter as Router, Route} from "react-router-dom";
 import '../styles/App.css';
 import ResortsList from "./ResortsList";
 import ResortDetails from "./ResortDetails";
@@ -25,7 +25,8 @@ class App extends Component {
 
   render() {
     return (
-      <Router basename={process.env.PUBLIC_URL}>
+      // <Router basename={process.env.PUBLIC_URL}>
+      <Router basename={'SkiResorts_Frontend'}>
       <div>
           <Switch>
           <Route path="/logowanie" component={LoginForm}/>
