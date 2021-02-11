@@ -4,7 +4,7 @@ import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'
 import Profile from './Profile'
 import Home from './Home';
-import { Switch, BrowserRouter as Router, Route} from "react-router-dom";
+import { Switch, HashRouter as Router, Route} from "react-router-dom";
 import '../styles/App.css';
 import ResortsList from "./ResortsList";
 import ResortDetails from "./ResortDetails";
@@ -25,8 +25,8 @@ class App extends Component {
 
   render() {
     return (
-      // <Router basename={process.env.PUBLIC_URL}>
-      <Router basename={'SkiResorts_Frontend'}>
+      <Router basename={process.env.PUBLIC_URL}>
+      {/* <Router basename={'SkiResorts_Frontend'}> */}
       <div>
           <Switch>
           <Route path="/logowanie" component={LoginForm}/>
@@ -34,7 +34,7 @@ class App extends Component {
           <Route path="/profil" component={Profile}/>
           <Route path="/osrodki" component={ResortsList}/>
           <Route path="/osrodek/:id" component={ResortDetails}/>
-          <Route exact path="/" component={Home}/>
+          <Route path="/" exact component={Home}/>
           <Route path="/preferencje" component={Preferences}/>
           <Route path="/preferowaneOsrodki" component={PreferredResortsList}/>
           <Route path="/ulubione" component={Favourites}/>
