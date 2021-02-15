@@ -51,24 +51,24 @@ class NavBar extends React.Component {
         return (
 
             <Navbar id="navbar" variant="dark" expand="lg" className="sticky-top">
-                <Navbar.Brand href="/"><h3>PolandSki</h3></Navbar.Brand>
+                <Link to="/" className="nav-brand"><h3>PolandSki</h3></Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Link to="/osrodki">Ośrodki</Link>
-                        <Nav.Link href="/preferencje">Preferencje</Nav.Link>
+                        <Link to="/osrodki" className="nav-link">Ośrodki</Link>
+                        <Link to="/preferemcje" className="nav-link">Preferencje</Link>
 
                         {this.state.currentUser ? (
                         <Nav>
-                        <Nav.Link href="/ulubione">Twoje ulubione</Nav.Link>
-                        <Nav.Link href="/oceny">Twoje oceny</Nav.Link>
+                        <Link to="/ulubione" className="nav-link">Twoje ulubione</Link>
+                        <Link to="/oceny" className="nav-link">Twoje oceny</Link>
                         </Nav>
                         ):(
                             <span></span>
                         )
                         }
                         {this.state.admin ? (
-                            <Nav.Link href="/admin">Dodaj ośrodek</Nav.Link>
+                            <Link to="/admin" className="nav-link">Dodaj ośrodek</Link>
                         ) : (
                                 <span></span>
                             )}
@@ -78,15 +78,19 @@ class NavBar extends React.Component {
                             <Nav>
                                 <Navbar.Text href="#profil" id="login-text">Zalogowany: {this.state.currentUser.login}</Navbar.Text>
                                 <NavDropdown title="Zarządzanie kontem" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="/lokalizacja">Twoja lokalizacja</NavDropdown.Item>
-                                <NavDropdown.Item href="/zmianaHasla">Zmiana hasła</NavDropdown.Item>
+                                {/* <NavDropdown.Item href="/lokalizacja">Twoja lokalizacja</NavDropdown.Item> */}
+                                <Link to="/lokalizacja" className="nav-dropdown-item">Twoja lokalizacja</Link>
+                                {/* <NavDropdown.Item href="/zmianaHasla">Zmiana hasła</NavDropdown.Item> */}
+                                <Link to="/zmianaHasla" className="nav-dropdown-item">Zmiana hasła</Link>
                         </NavDropdown>
-                                <Nav.Link href="/logowanie" onClick={this.logout}>Wyloguj</Nav.Link>
+                                {/* <Nav.Link href="/logowanie" onClick={this.logout}>Wyloguj</Nav.Link> */}
+                                <Link to="/logowanie" onClick={this.logout} className="nav-link">Wyloguj</Link>
+
                             </Nav>
                         ) : (
                             <Nav>
-                                <Nav.Link href="/logowanie">Logowanie</Nav.Link>
-                                <Nav.Link href="/rejestracja">Rejestracja</Nav.Link>
+                                <Link to="/logowanie" className="nav-dropdown-item">Logowanie</Link>
+                                <Link to="/rejestracja" className="nav-dropdown-item">Rejestracja</Link>
                             </Nav>
                             )}
                         

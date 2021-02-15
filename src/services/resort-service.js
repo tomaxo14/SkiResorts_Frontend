@@ -3,8 +3,8 @@ import authHeader from './auth-header';
 
 // const API_URL = 'http://localhost:8080/';
 const API_URL = 'https://ski-resorts-heroku.herokuapp.com/';
-const WEATHER_API_URL = 'http://api.openweathermap.org/data/2.5/weather?lat=';
-const WEATHER_API_URL_SEVEN_DAYS = 'http://api.openweathermap.org/data/2.5/onecall?lat=';
+const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather?lat=';
+const WEATHER_API_URL_SEVEN_DAYS = 'https://api.openweathermap.org/data/2.5/onecall?lat=';
 const WEATHER_API_URL_ENDING = '&units=metric&lang=pl&appid=621d81a28a5e153d8b0c65721e9c78c8';
 
 
