@@ -181,7 +181,8 @@ class ResortDetails extends React.Component {
                                     {this.state.currentUser === undefined || this.state.currentUser === null ? (
                                         <p>
                                             <br></br>
-                                            <Button href="/logowanie" className="button">Zaloguj się aby dodać ośrodek do ulubionych</Button>
+                                            {/* <Button href="/logowanie" className="button">Zaloguj się aby dodać ośrodek do ulubionych</Button> */}
+                                            <Link to="/logowanie" className="button">Zaloguj się aby dodać ośrodek do ulubionych</Link>
                                         </p>
                                     ) : (
                                             <div>
