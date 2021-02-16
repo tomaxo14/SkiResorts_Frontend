@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/SkiResorts_Frontend/static/css/main.323d8508.chunk.css",
+    "main.css": "/SkiResorts_Frontend/static/css/main.6933d180.chunk.css",
     "main.js": "/SkiResorts_Frontend/static/js/main.7ebd3ce9.chunk.js",
     "main.js.map": "/SkiResorts_Frontend/static/js/main.7ebd3ce9.chunk.js.map",
     "runtime-main.js": "/SkiResorts_Frontend/static/js/runtime-main.2a06bb3e.js",
@@ -9,10 +9,10 @@
     "static/js/2.658123b6.chunk.js": "/SkiResorts_Frontend/static/js/2.658123b6.chunk.js",
     "static/js/2.658123b6.chunk.js.map": "/SkiResorts_Frontend/static/js/2.658123b6.chunk.js.map",
     "index.html": "/SkiResorts_Frontend/index.html",
-    "precache-manifest.84d0467d4e882862dec5497b5b89c8d8.js": "/SkiResorts_Frontend/precache-manifest.84d0467d4e882862dec5497b5b89c8d8.js",
+    "precache-manifest.ebcf7792a4c8780473637fdede54c69c.js": "/SkiResorts_Frontend/precache-manifest.ebcf7792a4c8780473637fdede54c69c.js",
     "service-worker.js": "/SkiResorts_Frontend/service-worker.js",
     "static/css/2.d9ad5f5c.chunk.css.map": "/SkiResorts_Frontend/static/css/2.d9ad5f5c.chunk.css.map",
-    "static/css/main.323d8508.chunk.css.map": "/SkiResorts_Frontend/static/css/main.323d8508.chunk.css.map",
+    "static/css/main.6933d180.chunk.css.map": "/SkiResorts_Frontend/static/css/main.6933d180.chunk.css.map",
     "static/js/2.658123b6.chunk.js.LICENSE.txt": "/SkiResorts_Frontend/static/js/2.658123b6.chunk.js.LICENSE.txt",
     "static/media/gondola.png": "/SkiResorts_Frontend/static/media/gondola.bf0160d5.png",
     "static/media/kanapa.png": "/SkiResorts_Frontend/static/media/kanapa.cb320281.png",
@@ -25,7 +25,7 @@
     "static/js/runtime-main.2a06bb3e.js",
     "static/css/2.d9ad5f5c.chunk.css",
     "static/js/2.658123b6.chunk.js",
-    "static/css/main.323d8508.chunk.css",
+    "static/css/main.6933d180.chunk.css",
     "static/js/main.7ebd3ce9.chunk.js"
   ]
 }
