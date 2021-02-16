@@ -183,7 +183,7 @@ class ResortDetails extends React.Component {
                                         <p>
                                             <br></br>
                                             {/* <Button href="/logowanie" className="button">Zaloguj się aby dodać ośrodek do ulubionych</Button> */}
-                                            <Link to="/logowanie" className="button">Zaloguj się aby dodać ośrodek do ulubionych</Link>
+                                            <Link to="/logowanie"><Button className="button">Zaloguj się aby dodać ośrodek do ulubionych</Button></Link>
                                         </p>
                                     ) : (
                                             <div>

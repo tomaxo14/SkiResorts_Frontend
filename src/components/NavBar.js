@@ -56,7 +56,7 @@ class NavBar extends React.Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Link to="/osrodki" className="nav-link">Ośrodki</Link>
-                        <Link to="/preferemcje" className="nav-link">Preferencje</Link>
+                        <Link to="/preferencje" className="nav-link">Preferencje</Link>
 
                         {this.state.currentUser ? (
                         <Nav>

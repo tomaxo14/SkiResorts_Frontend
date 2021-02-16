@@ -9,5 +9,10 @@
 
 .nav-brand {
     color: white;
-    margin-right: 2em;
+    margin-right: 1.2em;
+}
+
+.nav-brand:hover {
+    color:rgb(216, 212, 212);
+    font-style: normal !important;
 }

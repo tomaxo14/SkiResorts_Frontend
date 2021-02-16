@@ -6,7 +6,7 @@ import UserService from '../services/user.service';
 import MyModal from './MyModal';
 import { Button } from 'react-bootstrap';
 import '../styles/RateResort.css';
-
+import { Link } from "react-router-dom";
 
 const RateResort = (props) =>  {
 
@@ -69,7 +69,7 @@ const RateResort = (props) =>  {
             <textarea  rows="5" cols="50" onChange={onInputChange} placeholder="Oprócz oceny możesz dodać opinię" id="opinion">
             </textarea>
             {props.user===undefined || props.user===null ? (
-                <Button href="/logowanie" id="rate-button">Zaloguj się aby wystawić ocenę</Button>
+                <Link to="/logowanie"><Button id="rate-button">Zaloguj się aby wystawić ocenę</Button></Link>
             ) : (
                 <div>
                 {message === '' || message === undefined ? (
