@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel, Button } from 'react-bootstrap'
+import { Link } from "react-router-dom";
 import AuthService from '../services/auth.service'
 import Slide1 from '../img/slide1.jpg';
 import Slide2 from '../img/slide2.jpg';
@@ -42,8 +43,8 @@ class CarouselImage extends React.Component {
 
                     <Carousel.Caption className="caption">
                         <h3 id="second-caption-title">Dlaczego warto się zarejestrować?</h3>
-                        <a href="#zalety"><Button id="check-button" variant="outline-dark">Sprawdź</Button></a>
-                        <a href="/rejestracja"><Button id="signup-button" variant="outline-dark">Zarejestruj się</Button></a>
+                        <Link to="#zalety"><Button id="check-button" variant="outline-dark">Sprawdź</Button></Link>
+                        <Link to="/rejestracja"><Button id="signup-button" variant="outline-dark">Zarejestruj się</Button></Link>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -55,7 +56,7 @@ class CarouselImage extends React.Component {
 
                     <Carousel.Caption className="caption">
                         <h3 id="third-caption-title">W naszej bazie posiadamy 350 ośrodków z Polski, Czech i Słowacji!</h3>
-                        <a href="/osrodki"><Button id="resort-button" variant="outline-dark">Przejdź do ośrodków</Button></a>
+                        <Link to="/osrodki"><Button id="resort-button" variant="outline-dark">Przejdź do ośrodków</Button></Link>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
