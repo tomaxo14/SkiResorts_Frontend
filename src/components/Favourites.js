@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import ResortsListElement from './ResortsListElement.js';
@@ -65,7 +66,7 @@ class Favourites extends React.Component {
                         <Container id="not-logged-data">
                             <p className="paragraph"><i class="massive clipboard outline icon"></i></p>
                             <p className="paragraph"><h3>Nie dodałeś jeszcze ośrodków do ulubionych</h3></p>
-                            <p className="paragraph"><a href="/osrodki"><Button className="button">Przejdź do ośrodków</Button></a></p>
+                            <p className="paragraph"><Link to="/osrodki"><Button className="button">Przejdź do ośrodków</Button></Link></p>
                         </Container>
                         <div id="not-logged-footer"><Footer></Footer></div>
                         </div>

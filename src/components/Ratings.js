@@ -55,7 +55,7 @@ class Ratings extends React.Component {
                             <Container id="not-logged-data">
                                 <p className="paragraph"><i class="massive clipboard outline icon"></i></p>
                                 <p className="paragraph"><h3>Nie oceniłeś jeszcze żadnego ośrodka</h3></p>
-                                <p className="paragraph"><a href="/osrodki"><Button className="button">Przejdź do ośrodków</Button></a></p>
+                                <p className="paragraph"><Link to="/osrodki"><Button className="button">Przejdź do ośrodków</Button></Link></p>
                             </Container>
                             <div id="not-logged-footer"><Footer></Footer></div>
                         </div>

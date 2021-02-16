@@ -212,7 +212,7 @@ class Preferences extends React.Component {
                     ) : (
                         <div>
                             {this.state.currentUser===undefined ? (
-                                <Button className="preferences-button" href="/logowanie">Zaloguj się, aby zapisać preferencje</Button>
+                                <Link to="/logowanie"><Button className="preferences-button">Zaloguj się, aby zapisać preferencje</Button></Link>
                             ):(<div>
                                 <Button className="preferences-button" onClick={this.onSaveClick}>Zapisz preferencje</Button>
                                 <MyModal title="Powiadomienie" body="Zapisano preferencje" show={this.state.showModal} onHide={this.closeModal} />

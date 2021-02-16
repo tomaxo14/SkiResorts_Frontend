@@ -13,6 +13,6 @@
 }
 
 .nav-brand:hover {
-    color:rgb(216, 212, 212);
-    font-style: normal !important;
+    color:rgba(255, 255, 255, 0.904);
+    text-decoration:none !important;
 }
