@@ -23,6 +23,7 @@
     "react-mailto": "^0.4.0",
     "react-map-gl": "^5.2.10",
     "react-router-dom": "^5.2.0",
+    "react-router-hash-link": "^2.4.0",
     "react-scripts": "3.4.3",
     "react-select": "^3.1.0",
     "react-validation": "^3.0.7",
