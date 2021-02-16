@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7fa21d128d35f931cbeb1b7f7b0d9937",
+    "revision": "e97dcfb8b16ef272547276026fb3af5f",
     "url": "/SkiResorts_Frontend/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/SkiResorts_Frontend/static/css/2.d9ad5f5c.chunk.css"
   },
   {
-    "revision": "3d3d6728d150c401d5a3",
-    "url": "/SkiResorts_Frontend/static/css/main.7326f8e5.chunk.css"
+    "revision": "1bbd61095930bfdbf2bf",
+    "url": "/SkiResorts_Frontend/static/css/main.907b75da.chunk.css"
   },
   {
     "revision": "383c226d965413bbf634",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/SkiResorts_Frontend/static/js/2.b52f7b75.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3d3d6728d150c401d5a3",
-    "url": "/SkiResorts_Frontend/static/js/main.c7670b9f.chunk.js"
+    "revision": "1bbd61095930bfdbf2bf",
+    "url": "/SkiResorts_Frontend/static/js/main.d0b3e4e0.chunk.js"
   },
   {
     "revision": "fd1f4a8ef3a56f229267",
