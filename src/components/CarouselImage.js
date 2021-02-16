@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel, Button } from 'react-bootstrap'
 import { Link } from "react-router-dom";
+import { HashLink } from 'react-router-hash-link';
 import AuthService from '../services/auth.service'
 import Slide1 from '../img/slide1.jpg';
 import Slide2 from '../img/slide2.jpg';
@@ -43,7 +44,7 @@ class CarouselImage extends React.Component {
 
                     <Carousel.Caption className="caption">
                         <h3 id="second-caption-title">Dlaczego warto się zarejestrować?</h3>
-                        <Link to="#zalety"><Button id="check-button" variant="outline-dark">Sprawdź</Button></Link>
+                        <HashLink to="#zalety"><Button id="check-button" variant="outline-dark">Sprawdź</Button></HashLink>
                         <Link to="/rejestracja"><Button id="signup-button" variant="outline-dark">Zarejestruj się</Button></Link>
                     </Carousel.Caption>
                 </Carousel.Item>
