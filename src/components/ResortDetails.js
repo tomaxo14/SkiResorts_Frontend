@@ -17,6 +17,7 @@ import Talerzyk from "../img/ski_lift_icons/talerzyk.png";
 import Gondola from "../img/ski_lift_icons/gondola.png";
 import Kanapa from "../img/ski_lift_icons/kanapa.png";
 import Orczyk from "../img/ski_lift_icons/orczyk.png";
+import { Link } from "react-router-dom";
 
 class ResortDetails extends React.Component {
 
