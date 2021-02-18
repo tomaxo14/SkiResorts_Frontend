@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "082ba4a4a07fe679c56ca1774a4c8a06",
+    "revision": "67e469c94b8118047b42d339eb1deab3",
     "url": "/SkiResorts_Frontend/index.html"
   },
   {
